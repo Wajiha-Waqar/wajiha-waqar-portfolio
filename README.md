@@ -112,8 +112,8 @@ The site is deployed with GitHub Pages:
 ## Contact
 
 - GitHub: [github.com/Wajiha-Waqar](https://github.com/Wajiha-Waqar)
-- LinkedIn: [linkedin.com/in/wajiha-waqar](https://www.linkedin.com/in/wajiha-waqar)
-- Email: wajiha.waqar@example.com
+- LinkedIn: [linkedin.com/in/wajiha-waqar](https://www.linkedin.com/in/wajiha0waqar)
+- Email: juxtjia@gmail.com
 
 ---
 
