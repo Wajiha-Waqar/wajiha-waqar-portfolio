@@ -418,6 +418,23 @@ section > h2:first-child,
     margin-bottom:14px;
 }
 
+/* Future-work / coming-soon placeholder cards */
+
+.project-card.placeholder{
+    background:transparent;
+    border:2px dashed var(--border);
+}
+
+.project-card.placeholder:hover{
+    border-color:var(--accent);
+    transform:none;
+    box-shadow:none;
+}
+
+.project-card.placeholder h3{
+    color:var(--muted);
+}
+
 /* ===========================
    CASE STUDY (FLYRANK) PAGE
 =========================== */
