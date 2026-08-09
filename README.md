@@ -2,7 +2,7 @@
 
 A personal portfolio website showcasing my work in Artificial Intelligence, Machine Learning, Data Engineering, and Research.
 
-**Live site:** ([https://wajiha-waqar.github.io/wajiha-waqar-portfolio/](https://wajiha-waqar-portfolio.netlify.app/projects))
+**Live site:** https://wajiha-waqar-portfolio.netlify.app/
 
 ---
 
