@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Research Paper Assistant Agent | Wajiha Waqar</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+<link rel="shortcut icon" href="favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<header>
+<nav class="navbar">
+
+<div class="nav-logo">
+<img src="images/Portfolio_logo.svg" alt="Portfolio Logo">
+<span>Wajiha Waqar</span>
+</div>
+
+<ul class="nav-links">
+<li><a href="index.html">Home</a></li>
+<li><a href="about.html">About</a></li>
+<li><a href="projects.html">Projects</a></li>
+<li><a href="flyrank.html">FlyRank Case Study</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
+
+</nav>
+</header>
+
+<main>
+
+<section class="case-header">
+
+<span class="badge">Full deployable Agent Coming Soon &mdash; MVP Built</span>
+
+<h1>Research Paper Assistant Agent</h1>
+<p>AI Agent Design &bull; NotebookLM &bull; Claude Project &bull; ChatGPT &bull; Academic Research</p>
+
+</section>
+
+<section class="case-section">
+
+<h2>Problem</h2>
+
+<p>
+Academic research usually means manually switching between several AI tools and research
+websites for literature review, summarization, drafting, and citation organization. The goal
+was to combine these tasks into a single structured workflow, while making sure every claim
+stayed grounded in real research papers rather than model memory.
+</p>
+
+<p>
+A prior workflow audit had already classified related research tasks by how much AI involvement
+was appropriate: literature review summaries were marked <strong>"Collaborate with AI"</strong>,
+since AI can summarize papers but relevance and accuracy still need to be verified by hand, while
+reading research papers itself was marked <strong>"Just Me"</strong>, since understanding and
+critical thinking can't be delegated. The agent was designed around that boundary &mdash; assist
+with the repetitive parts, leave the judgment calls to the researcher.
+</p>
+
+</section>
+
+<section class="case-section">
+
+<h2>My Role</h2>
+
+<ul>
+<li>Defined the agent's job-to-be-done, target user, and expected usage frequency</li>
+<li>Specified inputs and outputs, required tools, and a free-tier access plan for each tool</li>
+<li>Wrote a draft system prompt with explicit academic-integrity rules &mdash; never invent
+citations, distinguish facts from assumptions, state when evidence is insufficient</li>
+<li>Defined five evaluation cases covering literature review, outlining, revision, comparison
+tables, and feedback on a completed draft</li>
+<li>Classified the underlying pipeline as a <strong>workflow</strong> (specifically prompt-chaining),
+not an agent, using Anthropic's definitions from <em>Building Effective Agents</em></li>
+<li>Built and tested an MVP end-to-end: five research papers &rarr; NotebookLM &rarr; Claude
+&rarr; ChatGPT &rarr; formatted literature review</li>
+<li>Logged four build iterations, fixing unsupported claims, oversized summaries, and
+inconsistent formatting along the way</li>
+<li>Identified risks and guardrails, including required human review before any submission</li>
+</ul>
+
+</section>
+
+<section class="case-section">
+
+<h2>Tools</h2>
+
+<p><strong>Used in the MVP</strong></p>
+
+<div class="tag-grid">
+<div class="tag">NotebookLM</div>
+<div class="tag">Claude Project</div>
+<div class="tag">ChatGPT</div>
+</div>
+
+<p style="margin-top:28px;"><strong>Planned, not yet implemented</strong></p>
+
+<div class="tag-grid">
+<div class="tag accent">Zotero</div>
+<div class="tag accent">GitHub storage</div>
+<div class="tag accent">Automatic citation management</div>
+</div>
+
+<p style="margin-top:22px;">
+NotebookLM grounds responses in uploaded PDF sources rather than relying on model memory, Claude
+handles the academic reasoning and drafting, and ChatGPT improves formatting and readability.
+Each tool is responsible for one stage of the pipeline.
+</p>
+
+</section>
+
+<section class="case-section">
+
+<h2>Evidence</h2>
+
+<p>
+Full write-ups and the build demo are available below &mdash; open a preview in the browser or
+download the original file.
+</p>
+
+<div class="evidence-grid">
+
+<div class="file-card">
+<h3>Agent Design Document</h3>
+<p>Job-to-be-done, inputs/outputs, tool access plan, draft system prompt, five evaluation cases, risks and guardrails, and platform justification.</p>
+<div class="file-actions">
+<button class="btn-secondary-sm" onclick="previewDoc('assets/Design_Your_Personal_Agent.docx', 'Agent Design Document')">Preview</button>
+<a class="btn-primary-sm" href="assets/Design_Your_Personal_Agent.docx" download>Download</a>
+</div>
+</div>
+
+<div class="file-card">
+<h3>Build Report</h3>
+<p>MVP scope, workflow diagram, live tool connection, end-to-end demonstration, build log across four iterations, and the final agent output.</p>
+<div class="file-actions">
+<button class="btn-secondary-sm" onclick="previewDoc('assets/Build_the_Agent.docx', 'Build Report')">Preview</button>
+<a class="btn-primary-sm" href="assets/Build_the_Agent.docx" download>Download</a>
+</div>
+</div>
+
+<div class="file-card">
+<h3>Agent Concepts &amp; MCP Basics</h3>
+<p>Workflow vs. agent classification, an overview of the Model Context Protocol, and how the pipeline could evolve into an agent.</p>
+<div class="file-actions">
+<button class="btn-secondary-sm" onclick="previewDoc('assets/Agent_Concepts_and_MCP_Basics.docx', 'Agent Concepts &amp; MCP Basics')">Preview</button>
+<a class="btn-primary-sm" href="assets/Agent_Concepts_and_MCP_Basics.docx" download>Download</a>
+</div>
+</div>
+
+<div class="file-card">
+<h3>AI Workflow Audit &amp; Tool Setup</h3>
+<p>Task-by-task audit of which research and study tasks to delegate to AI, collaborate on, or keep manual, plus success criteria for each.</p>
+<div class="file-actions">
+<button class="btn-secondary-sm" onclick="previewDoc('assets/AI_Workflow_Audit_and_Tool_Setup.docx', 'AI Workflow Audit &amp; Tool Setup')">Preview</button>
+<a class="btn-primary-sm" href="assets/AI_Workflow_Audit_and_Tool_Setup.docx" download>Download</a>
+</div>
+</div>
+
+</div>
+
+<div class="video-card">
+<h3>Build Demo</h3>
+<p>Walkthrough of the MVP running end-to-end on five research papers about real-time multimodal disaster detection.</p>
+<div class="video-wrapper">
+<video controls preload="metadata">
+<source src="assets/Build_the_Agent.mp4" type="video/mp4">
+Your browser does not support embedded video. Use the download link below instead.
+</video>
+</div>
+<a class="btn-primary-sm" href="assets/Build_the_Agent.mp4" download>Download Demo Video</a>
+</div>
+
+</section>
+
+<section class="case-section">
+
+<h2>Lessons Learned</h2>
+
+<ul>
+<li>Not every multi-step AI system is an agent &mdash; a predictable, well-designed workflow can
+outperform unnecessary autonomy for structured research tasks.</li>
+<li>Simple workflows are often more reliable than attempting full automation.</li>
+<li>Giving each tool one clear responsibility &mdash; source grounding, reasoning, formatting
+&mdash; made the pipeline easier to build, debug, and extend.</li>
+<li>Human verification is still required for citation accuracy, interpretation of findings, and
+final approval before submission.</li>
+</ul>
+
+</section>
+
+<section class="contact-preview">
+
+<a href="projects.html" class="btn-primary">Back to Projects</a>
+
+</section>
+
+</main>
+
+<footer>
+<p>&copy; 2026 Wajiha Waqar &mdash; Built with HTML, CSS and GitHub Pages.</p>
+</footer>
+
+<div id="doc-preview-modal" class="doc-modal" hidden>
+<div class="doc-modal-inner">
+<div class="doc-modal-header">
+<h3 id="doc-modal-title">Document preview</h3>
+<button class="doc-modal-close" onclick="closeDocPreview()" aria-label="Close preview">&times;</button>
+</div>
+<div id="doc-modal-body" class="doc-modal-body">
+<p class="doc-modal-status">Loading preview&hellip;</p>
+</div>
+</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/mammoth@1.6.0/mammoth.browser.min.js"></script>
+<script src="script.js"></script>
+
+</body>
+
+</html>

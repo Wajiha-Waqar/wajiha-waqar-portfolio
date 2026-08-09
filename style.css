@@ -497,6 +497,215 @@ section > h2:first-child,
 }
 
 /* ===========================
+   EVIDENCE FILE CARDS (case studies)
+=========================== */
+
+.evidence-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:22px;
+    margin-top:24px;
+}
+
+.file-card{
+    background:var(--white);
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:22px;
+    display:flex;
+    flex-direction:column;
+}
+
+.file-card h3{
+    color:var(--primary);
+    font-size:17px;
+    margin-bottom:10px;
+}
+
+.file-card p{
+    color:var(--muted);
+    font-size:14px;
+    flex-grow:1;
+    margin-bottom:16px;
+}
+
+.file-actions{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+}
+
+.btn-primary-sm,
+.btn-secondary-sm{
+    display:inline-block;
+    padding:9px 16px;
+    border-radius:7px;
+    font-weight:600;
+    font-size:13px;
+    text-decoration:none;
+    cursor:pointer;
+    border:2px solid var(--primary);
+    transition:.2s;
+}
+
+.btn-primary-sm{
+    background:var(--primary);
+    color:var(--white);
+}
+
+.btn-primary-sm:hover{
+    background:var(--primary-dark);
+    border-color:var(--primary-dark);
+}
+
+.btn-secondary-sm{
+    background:transparent;
+    color:var(--primary);
+}
+
+.btn-secondary-sm:hover{
+    background:var(--primary);
+    color:var(--white);
+}
+
+/* ===========================
+   VIDEO DEMO CARD
+=========================== */
+
+.video-card{
+    background:var(--white);
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:22px;
+    margin-top:22px;
+}
+
+.video-card h3{
+    color:var(--primary);
+    font-size:17px;
+    margin-bottom:10px;
+}
+
+.video-card > p{
+    color:var(--muted);
+    font-size:14px;
+    margin-bottom:16px;
+}
+
+.video-wrapper{
+    margin-bottom:16px;
+}
+
+.video-wrapper video{
+    width:100%;
+    border-radius:10px;
+    border:1px solid var(--border);
+    background:#000;
+    display:block;
+}
+
+/* ===========================
+   DOCUMENT PREVIEW MODAL
+=========================== */
+
+.doc-modal{
+    position:fixed;
+    inset:0;
+    background:rgba(17,24,39,.55);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:24px;
+    z-index:1000;
+}
+
+.doc-modal[hidden]{
+    display:none;
+}
+
+.doc-modal-inner{
+    background:var(--bg);
+    width:100%;
+    max-width:760px;
+    max-height:85vh;
+    border-radius:14px;
+    display:flex;
+    flex-direction:column;
+    overflow:hidden;
+    box-shadow:0 20px 50px rgba(17,24,39,.25);
+}
+
+.doc-modal-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:18px 22px;
+    border-bottom:1px solid var(--border);
+    background:var(--white);
+}
+
+.doc-modal-header h3{
+    color:var(--primary);
+    font-size:17px;
+}
+
+.doc-modal-close{
+    background:none;
+    border:none;
+    font-size:26px;
+    line-height:1;
+    color:var(--muted);
+    cursor:pointer;
+    padding:0 4px;
+}
+
+.doc-modal-close:hover{
+    color:var(--primary);
+}
+
+.doc-modal-body{
+    padding:28px 32px;
+    overflow-y:auto;
+    background:var(--white);
+    color:var(--text);
+}
+
+.doc-modal-body h1,
+.doc-modal-body h2,
+.doc-modal-body h3{
+    color:var(--primary);
+    margin:20px 0 10px;
+}
+
+.doc-modal-body p{
+    margin-bottom:12px;
+    line-height:1.7;
+}
+
+.doc-modal-body ul,
+.doc-modal-body ol{
+    margin:0 0 12px 22px;
+}
+
+.doc-modal-body table{
+    width:100%;
+    border-collapse:collapse;
+    margin-bottom:16px;
+    font-size:14px;
+}
+
+.doc-modal-body th,
+.doc-modal-body td{
+    border:1px solid var(--border);
+    padding:8px 10px;
+    text-align:left;
+}
+
+.doc-modal-status{
+    color:var(--muted);
+}
+
+/* ===========================
    CONTACT PAGE
 =========================== */
 
