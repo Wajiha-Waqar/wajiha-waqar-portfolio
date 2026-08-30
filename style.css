@@ -436,6 +436,60 @@ section > h2:first-child,
 }
 
 /* ===========================
+   WORK EXPERIENCE
+=========================== */
+
+.experience-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:28px;
+}
+
+.experience-card{
+    background:var(--white);
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:28px;
+    transition:.2s;
+}
+
+.experience-card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 10px 24px rgba(17,24,39,.08);
+}
+
+.experience-card h3{
+    color:var(--primary);
+    font-size:19px;
+    margin-bottom:6px;
+}
+
+.experience-meta{
+    color:var(--muted);
+    font-size:13px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:.02em;
+    margin-bottom:16px;
+}
+
+.experience-card > p:not(.experience-meta){
+    color:var(--muted);
+    margin-bottom:16px;
+}
+
+.experience-card ul{
+    color:var(--muted);
+    padding-left:20px;
+    margin-bottom:16px;
+}
+
+.experience-card li{
+    margin-bottom:6px;
+    font-size:14px;
+}
+
+/* ===========================
    CASE STUDY (FLYRANK) PAGE
 =========================== */
 
