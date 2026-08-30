@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Leakage-Aware Content Refresh Scoring | Wajiha Waqar</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+<link rel="shortcut icon" href="favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<header>
+<nav class="navbar">
+
+<div class="nav-logo">
+<img src="images/Portfolio_logo.svg" alt="Portfolio Logo">
+<span>Wajiha Waqar</span>
+</div>
+
+<ul class="nav-links">
+<li><a href="index.html">Home</a></li>
+<li><a href="about.html">About</a></li>
+<li><a href="projects.html">Projects</a></li>
+<li><a href="flyrank.html">FlyRank Case Study</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
+
+</nav>
+</header>
+
+<main>
+
+<section class="case-header">
+
+<h1>Leakage-Aware Content Refresh Opportunity Scoring</h1>
+<p>FlyRank ML Internship &bull; Capstone &bull; Machine Learning Track</p>
+
+</section>
+
+<section class="case-section">
+
+<h2>Problem</h2>
+
+<p>
+Content teams often have more pages worth investigating than they can review at once, which
+creates a prioritization problem: which pages should a human content or SEO reviewer inspect
+first?
+</p>
+
+<p>
+The research question was whether March-only, non-label-derived search and engagement signals
+can rank content that subsequently meets a predefined refresh-review condition in April. The
+intended output was a ranking and triage system to support human review &mdash; not an automated
+publishing or content-management system, and not a claim about Google's ranking algorithm or the
+causal effect of refreshing content.
+</p>
+
+</section>
+
+<section class="case-section">
+
+<h2>My Role</h2>
+
+<ul>
+<li>Defined an operational research outcome (<code>refresh_outcome</code>) using minimum
+impressions, measurable CTR, and a subsequent CTR decline threshold</li>
+<li>Built month-to-month development panels (January&rarr;February, February&rarr;March) and
+held out a future test window (March&rarr;April) so evaluation never saw information from the
+future</li>
+<li>Engineered a 26-feature set from search position, GA4 engagement, and traffic-channel
+signals, explicitly excluding outcome-derived fields</li>
+<li>Ran a final leakage audit to confirm no future or outcome-derived fields entered the
+predictive feature set</li>
+<li>Compared Logistic Regression and Random Forest using a client-grouped internal validation
+split, selecting the model on Average Precision before touching the future test set</li>
+<li>Evaluated the selected model against a fixed Week-4 baseline on the same held-out future
+test window</li>
+<li>Converted model scores into a tiered human-review queue with reason codes and an explicit
+list of actions that should not be automated</li>
+<li>Documented limitations, including the observational nature of the data and the absence of
+any causal refresh claim</li>
+</ul>
+
+</section>
+
+<section class="case-section">
+
+<h2>Tools</h2>
+
+<div class="tag-grid">
+<div class="tag">Python</div>
+<div class="tag">Pandas</div>
+<div class="tag">Scikit-learn</div>
+<div class="tag">Random Forest</div>
+<div class="tag">Jupyter Notebook</div>
+</div>
+
+<p style="margin-top:22px;">
+The analysis ran on the FlyRank internship warehouse (<code>fact_content_daily_performance</code>,
+~78.8M rows) combining Google Search Console signals with GA4 engagement data.
+</p>
+
+</section>
+
+<section class="case-section">
+
+<h2>Results</h2>
+
+<p>
+The selected Random Forest was evaluated against a fixed Week-4 baseline on the same held-out
+March&rarr;April future test set (positive-class base rate 23.74%).
+</p>
+
+<table class="data-table">
+<thead>
+<tr>
+<th>Metric</th>
+<th>Week-4 Baseline</th>
+<th>Random Forest</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>Precision@20</td><td>0.40</td><td>0.65</td></tr>
+<tr><td>Precision@50</td><td>0.52</td><td>0.70</td></tr>
+<tr><td>Precision@100</td><td>0.54</td><td>0.76</td></tr>
+<tr><td>Average Precision</td><td>0.3807</td><td>0.4838</td></tr>
+</tbody>
+</table>
+
+<p>
+Relative to the 23.74% base rate, that's roughly 2.7&ndash;3.2&times; concentration of the
+predefined outcome in the top-ranked pages &mdash; evidence that the ranking concentrates the
+outcome toward higher model scores in the evaluated population, not evidence that refreshing
+content causes improvement.
+</p>
+
+</section>
+
+<section class="case-section">
+
+<h2>Evidence</h2>
+
+<div class="evidence-grid">
+
+<div class="file-card">
+<h3>Capstone Notebook</h3>
+<p>
+End-to-end analysis: data loading, temporal splits, feature engineering, the leakage audit,
+model selection, and future-window evaluation.
+</p>
+<div class="file-actions">
+<a class="btn-primary-sm" href="https://github.com/Wajiha-Waqar/FlyRankInternship/blob/main/work/notebooks/capstone.ipynb" target="_blank" rel="noopener">View on GitHub</a>
+</div>
+</div>
+
+<div class="file-card">
+<h3>Published Paper</h3>
+<p>
+Full write-up covering the research question, methodology, results, limitations, and the
+human-review protocol.
+</p>
+<div class="file-actions">
+<a class="btn-primary-sm" href="https://wajiha-waqar.github.io/FlyRankInternship/" target="_blank" rel="noopener">Read Paper</a>
+</div>
+</div>
+
+</div>
+
+</section>
+
+<section class="case-section">
+
+<h2>Lessons Learned</h2>
+
+<ul>
+<li>Outperforming a fixed baseline on a genuine future window still only supports
+decision-making &mdash; it doesn't prove causation.</li>
+<li>A leakage audit has to check for outcome-derived fields even after the obvious ones
+(impressions, CTR) are already removed.</li>
+<li>Client-grouped validation keeps a model from learning client identity instead of a general,
+transferable signal.</li>
+<li>Reporting relative concentration (e.g. Precision@20 vs. the base rate) communicates value
+more honestly than a single accuracy number on its own.</li>
+<li>Listing what should <em>not</em> be automated is as important as what the model
+recommends.</li>
+</ul>
+
+</section>
+
+<section class="contact-preview">
+
+<a href="projects.html" class="btn-primary">Back to Projects</a>
+
+</section>
+
+</main>
+
+<footer>
+<p>&copy; 2026 Wajiha Waqar &mdash; Built with HTML, CSS and GitHub Pages.</p>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>

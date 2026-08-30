@@ -604,6 +604,42 @@ section > h2:first-child,
     display:block;
 }
 
+.case-section code{
+    background:#EFF6FF;
+    color:var(--primary);
+    padding:2px 6px;
+    border-radius:4px;
+    font-size:14px;
+}
+
+.data-table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:20px;
+    font-size:14px;
+    background:var(--white);
+    border:1px solid var(--border);
+    border-radius:10px;
+    overflow:hidden;
+}
+
+.data-table th,
+.data-table td{
+    padding:12px 16px;
+    text-align:left;
+    border-bottom:1px solid var(--border);
+}
+
+.data-table th{
+    background:#EFF6FF;
+    color:var(--primary);
+    font-weight:700;
+}
+
+.data-table tr:last-child td{
+    border-bottom:none;
+}
+
 /* ===========================
    DOCUMENT PREVIEW MODAL
 =========================== */
