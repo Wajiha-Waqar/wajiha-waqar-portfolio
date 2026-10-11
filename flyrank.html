@@ -5,11 +5,14 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Case study: a transparent baseline ranking system for identifying pages that may need an SEO refresh, built with DuckDB and Python.">
+<meta name="theme-color" content="#F9FAFB">
 
 <title>FlyRank Case Study | Wajiha Waqar</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=Inter:wght@400;500;600&amp;family=Source+Serif+4:wght@400;500;600&amp;display=swap" rel="stylesheet">
 
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
@@ -17,34 +20,44 @@
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <link rel="manifest" href="site.webmanifest">
 
+<script>document.documentElement.classList.add('js');</script>
 <link rel="stylesheet" href="style.css">
 
 </head>
 
 <body>
 
-<header>
-<nav class="navbar">
+<a class="skip-link" href="#main">Skip to content</a>
 
-<div class="nav-logo">
-<img src="images/Portfolio_logo.svg" alt="Portfolio Logo">
+<header class="site-header">
+<nav class="navbar" aria-label="Primary">
+
+<a class="nav-logo" href="index.html">
+<img src="images/Portfolio_logo.svg" alt="" width="30" height="30">
 <span>Wajiha Waqar</span>
-</div>
+</a>
 
-<ul class="nav-links">
+<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu">
+<span class="sr-only">Menu</span>
+<span class="nav-toggle-bars" aria-hidden="true"></span>
+</button>
+
+<ul class="nav-links" id="nav-menu">
 <li><a href="index.html">Home</a></li>
 <li><a href="about.html">About</a></li>
-<li><a href="projects.html">Projects</a></li>
-<li><a class="active" href="flyrank.html">FlyRank Case Study</a></li>
+<li><a href="projects.html" aria-current="true">Projects</a></li>
+<li><a href="index.html#experience">Experience</a></li>
 <li><a href="contact.html">Contact</a></li>
 </ul>
 
 </nav>
 </header>
 
-<main>
+<main id="main">
 
 <section class="case-header">
+
+<p class="case-back"><a href="projects.html">&larr; Projects</a></p>
 
 <h1>FlyRank Search Intelligence Internship</h1>
 <p>Machine Learning &bull; Data Engineering &bull; DuckDB &bull; Python &bull; SEO Analytics</p>
@@ -126,8 +139,11 @@ View GitHub Repository
 
 </main>
 
-<footer>
-<p>&copy; 2026 Wajiha Waqar &mdash; Built with HTML, CSS and GitHub Pages.</p>
+<footer class="site-footer">
+<div class="footer-inner">
+<p>&copy; 2026 Wajiha Waqar</p>
+<p>Built with HTML, CSS and GitHub Pages.</p>
+</div>
 </footer>
 
 <script src="script.js"></script>

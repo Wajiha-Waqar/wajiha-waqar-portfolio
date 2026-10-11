@@ -2,7 +2,7 @@
 
 A personal portfolio website showcasing my work in Artificial Intelligence, Machine Learning, Data Engineering, and Research.
 
-**Live site:** https://wajiha-waqar-portfolio.netlify.app/
+**Live site:** [https://wajiha-waqar.github.io/wajiha-waqar-portfolio/](https://wajiha-waqar.github.io/wajiha-waqar-portfolio/)
 
 ---
 
@@ -112,11 +112,33 @@ The site is deployed with GitHub Pages:
 ## Contact
 
 - GitHub: [github.com/Wajiha-Waqar](https://github.com/Wajiha-Waqar)
-- LinkedIn: [linkedin.com/in/wajiha-waqar](https://www.linkedin.com/in/wajiha0waqar)
-- Email: juxtjia@gmail.com
+- LinkedIn: [linkedin.com/in/wajiha-waqar](https://www.linkedin.com/in/wajiha-waqar)
+- Email: wajiha.waqar@example.com
 
 ---
 
 ## License
 
 This repository contains personal portfolio content. Code may be reused for reference; personal content, writing, and images are not licensed for reuse.
+
+---
+
+## Admin panel
+
+Edit the site without touching source code at `https://wajiha-waqar.github.io/wajiha-waqar-portfolio/admin/`.
+
+**How it works.** GitHub Pages is static hosting, so there is no server and no username/password. The admin panel is a static page that signs in with a GitHub fine-grained access token and saves changes as normal Git commits through the GitHub API. GitHub verifies the token on every write, so the public admin URL is harmless without it. Every change is permanent *and* reversible from the repo's commit history.
+
+**One-time setup**
+1. GitHub → Settings → Developer settings → Personal access tokens → **Fine-grained tokens** → Generate new token.
+2. Repository access: *Only select repositories* → this repo. Permissions → Repository → **Contents: Read and write** (optionally *Pages: Read*). Set an expiry.
+3. Open `/admin/`, paste the token, sign in.
+
+**What you can do**
+- **Pages:** click and type over any text, duplicate / move / delete blocks, change links and images, edit title and description, preview at desktop/tablet/mobile widths.
+- **Files:** edit any text file (including `style.css`), upload and delete files, create a new page from an existing one.
+- **Navigation:** edit the menu once and apply it to every page in a single commit.
+
+**Limits.** Uploads over 50 MB (e.g. large videos) must be added with Git. Branch protection that requires pull requests on `main` will block saves. The first save of a page may re-indent its HTML (it renders identically).
+
+Files: `admin/index.html`, `admin/admin.css`, `admin/admin.js` (UI), `admin/core.js` (GitHub client and helpers), `admin/config.js` (owner / repo / branch).

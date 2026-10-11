@@ -5,11 +5,14 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Portfolio of Wajiha Waqar, an IT student working toward AI/ML engineering, research, operations research and quantitative research.">
+<meta name="theme-color" content="#F9FAFB">
 
-<title>Wajiha Waqar Portfolio</title>
+<title>Wajiha Waqar | AI Portfolio</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=Inter:wght@400;500;600&amp;family=Source+Serif+4:wght@400;500;600&amp;display=swap" rel="stylesheet">
 
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
@@ -17,107 +20,221 @@
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <link rel="manifest" href="site.webmanifest">
 
+<script>document.documentElement.classList.add('js');</script>
 <link rel="stylesheet" href="style.css">
 
 </head>
 
 <body>
 
-<header>
-<nav class="navbar">
+<a class="skip-link" href="#main">Skip to content</a>
 
-<div class="nav-logo">
-<img src="images/Portfolio_logo.svg" alt="Portfolio Logo">
+<header class="site-header">
+<nav class="navbar" aria-label="Primary">
+
+<a class="nav-logo" href="index.html">
+<img src="images/Portfolio_logo.svg" alt="" width="30" height="30">
 <span>Wajiha Waqar</span>
-</div>
+</a>
 
-<ul class="nav-links">
-<li><a class="active" href="index.html">Home</a></li>
+<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu">
+<span class="sr-only">Menu</span>
+<span class="nav-toggle-bars" aria-hidden="true"></span>
+</button>
+
+<ul class="nav-links" id="nav-menu">
+<li><a href="index.html" aria-current="page">Home</a></li>
 <li><a href="about.html">About</a></li>
 <li><a href="projects.html">Projects</a></li>
-<li><a href="flyrank.html">FlyRank Case Study</a></li>
+<li><a href="index.html#experience">Experience</a></li>
 <li><a href="contact.html">Contact</a></li>
 </ul>
 
 </nav>
 </header>
 
-<main>
+<main id="main">
 
-<section class="hero">
+<div class="hero-wrap">
+<section class="hero" aria-labelledby="name">
 
-<img src="images/Portfolio_logo.svg" class="hero-logo" alt="Portfolio Logo">
-
-<h1>Wajiha Waqar</h1>
-
-<h2>IT Student &bull; Aspiring AI Engineer &bull; Machine Learning Researcher</h2>
-
-<p class="claim">
-I build AI-powered decision-support systems through honest machine learning and careful engineering.
-</p>
-
+<div class="hero-main">
+<p class="eyebrow">Portfolio &middot; 2026</p>
+<h1 id="name">Wajiha Waqar</h1>
+<p class="hero-role">IT Student &middot; Aspiring AI Engineer &middot; Machine Learning Researcher</p>
+<p class="claim">I build AI-powered decision-support systems through honest machine learning and careful engineering.</p>
 <p class="intro">
 I am an undergraduate IT student focused on Artificial Intelligence, Machine Learning, Operations
 Research and Quantitative Finance. My goal is to build trustworthy AI systems that help people make
 better decisions through data, research and transparent engineering.
 </p>
-
+<ul class="domains" aria-label="Areas of focus">
+<li>AI / ML</li><li>Research</li><li>Operations Research</li><li>Quantitative systems</li><li>Software engineering</li>
+</ul>
 <div class="hero-buttons">
 <a href="projects.html" class="btn-primary">View Projects</a>
 <a href="about.html" class="btn-secondary">About Me</a>
 </div>
+</div>
+
+<aside class="profile" aria-labelledby="profile-h">
+<h2 id="profile-h">Profile</h2>
+<dl class="facts">
+<div><dt>Status</dt><dd>Undergraduate student</dd></div>
+<div><dt>Studying</dt><dd>Information Technology (Bachelor's)</dd></div>
+<div><dt>Focus</dt><dd>Machine learning, data engineering, explainable decision-support systems</dd></div>
+<div><dt>Interests</dt><dd>Operations Research, Optimization, Quantitative Finance</dd></div>
+<div><dt>Direction</dt><dd>Master's in AI &rarr; PhD in Operations Research &rarr; Quantitative Research</dd></div>
+<div><dt>Record</dt><dd>2 capstone case studies &middot; 2 internships</dd></div>
+</dl>
+</aside>
 
 </section>
+</div>
 
-<section class="featured">
+<div class="band">
+<section aria-labelledby="path-h">
+<header class="section-head">
+<p class="eyebrow">Direction</p>
+<h2 id="path-h">One line of work, five disciplines</h2>
+<p class="lede">Engineering, machine learning, optimization and quantitative methods are treated as a single thread: building systems that support better decisions.</p>
+</header>
+<ol class="path">
+<li><span class="path-n">01</span><span class="path-t">Software Engineering</span></li>
+<li class="is-current"><span class="path-n">02</span><span class="path-t">AI / ML Engineering</span><span class="path-now">Current</span></li>
+<li><span class="path-n">03</span><span class="path-t">Machine Learning Research</span></li>
+<li><span class="path-n">04</span><span class="path-t">Operations Research / Optimization</span></li>
+<li><span class="path-n">05</span><span class="path-t">Quantitative Research</span></li>
+</ol>
+</section>
+</div>
 
-<h2>Featured Capstones</h2>
-
-<div class="project-grid">
-
-<div class="project-card">
-<h3>Research Paper Assistant Agent</h3>
-<p>
-Designed and built the MVP of an AI agent that supports source-grounded academic research by
-combining NotebookLM, Claude, and ChatGPT into one workflow &mdash; covering literature review,
-drafting, and formatting while keeping citation accuracy and final decisions with the researcher.
+<section id="featured" aria-labelledby="featured-h">
+<header class="section-head">
+<p class="eyebrow">Featured work</p>
+<h2 id="featured-h">Capstone case studies</h2>
+<p class="lede">Two capstone projects, written up as case studies: the problem, the method, the outcome, and the limits of each claim.</p>
+</header>
+<article class="case reveal" id="project-01">
+<header class="case-head">
+<p class="case-index">Project 01</p>
+<h3 class="case-title">Research Paper Assistant Agent</h3>
+<ul class="labels" aria-label="Project categories">
+<li class="label label--research">Research</li><li class="label">AI / ML</li><li class="label">Systems</li>
+</ul>
+</header>
+<div class="case-grid">
+<dl class="case-facts">
+<div><dt>Problem</dt><dd>Academic research means switching between several AI tools and research sites for literature review, summarization, drafting and citation organization, while every claim still needs to stay grounded in real papers.</dd></div>
+<div><dt>Approach</dt><dd>The pipeline was classified as a workflow (prompt-chaining), not an agent. Each tool has one responsibility: NotebookLM grounds answers in uploaded PDF sources, Claude handles reasoning and drafting, ChatGPT improves formatting and readability.</dd></div>
+<div><dt>Methods</dt><dd>An agent design document (job-to-be-done, inputs and outputs, tool access plan), a draft system prompt with academic-integrity rules, five evaluation cases, risks and guardrails, and a four-iteration build log.</dd></div>
+<div><dt>Outcome</dt><dd>An MVP built and tested end-to-end on five research papers. Human review remains required for citation accuracy, interpretation and final approval. Zotero and GitHub storage are planned, not implemented.</dd></div>
+</dl>
+<aside class="case-side" aria-label="Project 01 details">
+<figure class="diagram">
+<figcaption><h4>Pipeline</h4></figcaption>
+<ol>
+<li>Uploaded research papers (PDF)</li>
+<li>NotebookLM<small>source-grounded summaries</small></li>
+<li>Claude Project<small>reasoning and drafting</small></li>
+<li>ChatGPT<small>formatting and readability</small></li>
+</ol>
+</figure>
+<div class="side-block">
+<h4>Technology</h4>
+<ul class="tech"><li>NotebookLM</li><li>Claude Project</li><li>ChatGPT</li></ul>
+</div>
+<p class="case-links"><a class="btn-primary" href="research-agent.html">Read case study</a></p>
+</aside>
+</div>
+</article>
+<article class="case reveal" id="project-02">
+<header class="case-head">
+<p class="case-index">Project 02</p>
+<h3 class="case-title">Leakage-Aware Content Refresh Opportunity Scoring</h3>
+<ul class="labels" aria-label="Project categories">
+<li class="label label--research">Research</li><li class="label">AI / ML</li><li class="label">Data</li>
+</ul>
+</header>
+<div class="case-grid">
+<dl class="case-facts">
+<div><dt>Problem</dt><dd>Content teams have more pages worth reviewing than they can inspect. The question: can March-only, non-label-derived search and engagement signals rank content that later meets a predefined refresh-review condition in April?</dd></div>
+<div><dt>Approach</dt><dd>A ranking and triage system to support human review, not automated publishing. Month-to-month development panels (Jan&rarr;Feb, Feb&rarr;Mar) with a held-out future test window (Mar&rarr;Apr), so evaluation never sees the future.</dd></div>
+<div><dt>Methods</dt><dd>A 26-feature set from search position, GA4 engagement and traffic-channel signals; a final leakage audit; Logistic Regression and Random Forest compared with client-grouped validation and selected on Average Precision; a tiered review queue with reason codes.</dd></div>
+<div><dt>Outcome</dt><dd>On the held-out window (base rate 23.74%), the Random Forest reached Precision@20 of 0.65 against 0.40 for the Week-4 baseline, and Average Precision of 0.4838 against 0.3807. This supports ranking pages for review; it makes no causal claim about refreshing content.</dd></div>
+</dl>
+<aside class="case-side" aria-label="Project 02 details">
+<figure class="diagram">
+<figcaption><h4>Evaluation design</h4></figcaption>
+<ol>
+<li>Development panels<small>Jan&rarr;Feb, Feb&rarr;Mar</small></li>
+<li>Model selection<small>client-grouped validation, Average Precision</small></li>
+<li>Held-out test<small>Mar&rarr;Apr, vs. fixed baseline</small></li>
+</ol>
+</figure>
+<div class="side-block">
+<h4>Technology</h4>
+<ul class="tech"><li>Python</li><li>Pandas</li><li>Scikit-learn</li><li>Random Forest</li><li>Jupyter Notebook</li></ul>
+</div>
+<p class="case-links">
+<a class="btn-primary" href="capstone.html">Read case study</a>
+<a class="text-link" href="https://github.com/Wajiha-Waqar/FlyRankInternship/blob/main/work/notebooks/capstone.ipynb" target="_blank" rel="noopener">Notebook<span class="sr-only"> (opens in new tab)</span></a>
+<a class="text-link" href="https://wajiha-waqar.github.io/FlyRankInternship/" target="_blank" rel="noopener">Paper<span class="sr-only"> (opens in new tab)</span></a>
 </p>
-<a href="research-agent.html" class="card-link">Read the Case Study &rarr;</a>
+</aside>
 </div>
-
-<div class="project-card">
-<h3>Leakage-Aware Content Refresh Opportunity Scoring</h3>
-<p>
-Built a time-aware Random Forest ranking model on FlyRank's search and engagement warehouse to
-prioritize which content pages a human reviewer should check first, evaluated on a genuine
-held-out future month to avoid leakage.
-</p>
-<a href="capstone.html" class="card-link">Read the Case Study &rarr;</a>
-</div>
-
-</div>
-
+</article>
 </section>
 
-<section class="experience">
+<section id="experience" aria-labelledby="xp-h">
+<header class="section-head">
+<p class="eyebrow">Experience</p>
+<h2 id="xp-h">Work experience</h2>
+</header>
+<ol class="xp-list">
 
-<h2>Work Experience</h2>
-
-<div class="experience-grid">
-
-<div class="experience-card">
-<h3>Machine Learning Intern</h3>
-<p class="experience-meta">FlyRank &bull; Internship</p>
-<p>
-Built transparent machine learning baselines, performed signal audits, designed explainable
-scoring rules and analysed SEO performance using Python, DuckDB and real-world warehouse data.
-</p>
-<a href="flyrank.html" class="card-link">Read the Case Study &rarr;</a>
+<li class="xp xp--major reveal">
+<div class="xp-meta">
+<p class="xp-org">FlyRank</p>
+<p class="xp-dates">Internship &middot; Machine Learning</p>
 </div>
+<div class="xp-body">
+<h3>Search Intelligence Intern</h3>
+<p>Built transparent machine learning baselines, performed signal audits, designed explainable scoring rules and analysed SEO performance using Python, DuckDB and real-world warehouse data.</p>
+<div class="xp-cols">
+<div>
+<h4>Responsibilities</h4>
+<ul>
+<li>Performed signal validation</li>
+<li>Designed transparent scoring rules</li>
+<li>Generated ranked action queues</li>
+<li>Evaluated baseline logic</li>
+<li>Reviewed top-ranked pages</li>
+</ul>
+</div>
+<div>
+<h4>Technical contributions</h4>
+<ul class="tech"><li>DuckDB</li><li>Python</li><li>Pandas</li><li>NumPy</li><li>Google Colab</li></ul>
+</div>
+</div>
+<div>
+<h4>Outcome</h4>
+<p>A transparent baseline ranking system for identifying pages that may need an SEO refresh, with rule-based scoring, signal validation, ranked queues and model benchmarking.</p>
+</div>
+<p class="case-links">
+<a class="text-link" href="flyrank.html">Read the case study</a>
+<a class="text-link" href="capstone.html">Related capstone</a>
+</p>
+</div>
+</li>
 
-<div class="experience-card">
+<li class="xp reveal">
+<div class="xp-meta">
+<p class="xp-org">EDEX Group of Chakwal</p>
+<p class="xp-dates">3 months &middot; Completed April 2026</p>
+</div>
+<div class="xp-body">
 <h3>Admission Officer Intern</h3>
-<p class="experience-meta">EDEX Group of Chakwal &bull; 3-Month Internship &bull; Completed April 2026</p>
 <ul>
 <li>Assisted students with course searching based on their interests and academic background</li>
 <li>Conducted profile assessments for study-abroad opportunities</li>
@@ -125,44 +242,53 @@ scoring rules and analysed SEO performance using Python, DuckDB and real-world w
 <li>Guided students on admission requirements and basic procedures</li>
 <li>Supported documentation and application processes</li>
 </ul>
-<a class="btn-secondary-sm" href="images/Edex_internship_cert.jpg" target="_blank" rel="noopener">View Certificate</a>
+<a class="btn-secondary-sm" href="assets/Edex_internship_cert.jpg" target="_blank" rel="noopener">View certificate<span class="sr-only"> (opens in new tab)</span></a>
 </div>
+</li>
 
-</div>
-
+</ol>
 </section>
 
-<section class="skills">
-
-<h2>Skills</h2>
-
-<div class="skill-grid">
-<div class="skill-card">Python</div>
-<div class="skill-card">Machine Learning</div>
-<div class="skill-card">Data Analysis</div>
-<div class="skill-card">SQL</div>
-<div class="skill-card">DuckDB</div>
-<div class="skill-card">Git &amp; GitHub</div>
-<div class="skill-card">Research</div>
-<div class="skill-card">Decision Support Systems</div>
+<section id="capabilities" aria-labelledby="cap-h">
+<header class="section-head">
+<p class="eyebrow">Capabilities</p>
+<h2 id="cap-h">Technical capability map</h2>
+<p class="lede">Grouped by how each skill is used in the work above.</p>
+</header>
+<div class="capmap">
+<div class="cap reveal">
+<h3><span class="cap-n">01</span>Programming &amp; Software</h3>
+<ul class="cap-list"><li>Python</li><li>SQL</li><li>Git &amp; GitHub</li><li>HTML &amp; CSS</li></ul>
 </div>
-
+<div class="cap reveal">
+<h3><span class="cap-n">02</span>AI / Machine Learning</h3>
+<ul class="cap-list"><li>Machine Learning</li><li>Scikit-learn</li><li>Natural Language Processing</li><li>AI agent design</li></ul>
+</div>
+<div class="cap reveal">
+<h3><span class="cap-n">03</span>Data &amp; Analytics</h3>
+<ul class="cap-list"><li>Data Analysis</li><li>DuckDB</li><li>Pandas &amp; NumPy</li><li>Google Colab &amp; Jupyter</li></ul>
+</div>
+<div class="cap reveal">
+<h3><span class="cap-n">04</span>Research &amp; Methods</h3>
+<ul class="cap-list"><li>Research</li><li>Decision Support Systems</li><li>Signal validation</li><li>Leakage-aware evaluation</li></ul>
+</div>
+</div>
+<p class="cap-note"><strong>Directions of interest</strong>Operations Research, Optimization, Quantitative Finance</p>
 </section>
 
-<section class="contact-preview">
-
-<h2>Let's Connect</h2>
-
-<p>Interested in AI, research, machine learning or collaboration?</p>
-
+<section class="contact-preview" aria-labelledby="contact-h">
+<p class="eyebrow">Contact</p>
+<h2 id="contact-h">Let's Connect</h2>
+<p class="lede">Interested in AI, research, machine learning or collaboration?</p>
 <a href="contact.html" class="btn-primary">Contact Me</a>
-
 </section>
 
 </main>
-
-<footer>
-<p>&copy; 2026 Wajiha Waqar &mdash; Built with HTML, CSS and GitHub Pages.</p>
+<footer class="site-footer">
+<div class="footer-inner">
+<p>&copy; 2026 Wajiha Waqar</p>
+<p>Built with HTML, CSS and GitHub Pages.</p>
+</div>
 </footer>
 
 <script src="script.js"></script>

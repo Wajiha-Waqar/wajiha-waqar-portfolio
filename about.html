@@ -5,11 +5,14 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Academic and technical profile of Wajiha Waqar: IT student, machine learning and data engineering, research interests in AI, operations research and quantitative finance.">
+<meta name="theme-color" content="#F9FAFB">
 
 <title>About | Wajiha Waqar</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=Inter:wght@400;500;600&amp;family=Source+Serif+4:wght@400;500;600&amp;display=swap" rel="stylesheet">
 
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
@@ -17,115 +20,127 @@
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <link rel="manifest" href="site.webmanifest">
 
+<script>document.documentElement.classList.add('js');</script>
 <link rel="stylesheet" href="style.css">
 
 </head>
 
 <body>
 
-<header>
-<nav class="navbar">
+<a class="skip-link" href="#main">Skip to content</a>
 
-<div class="nav-logo">
-<img src="images/Portfolio_logo.svg" alt="Portfolio Logo">
+<header class="site-header">
+<nav class="navbar" aria-label="Primary">
+
+<a class="nav-logo" href="index.html">
+<img src="images/Portfolio_logo.svg" alt="" width="30" height="30">
 <span>Wajiha Waqar</span>
-</div>
+</a>
 
-<ul class="nav-links">
+<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu">
+<span class="sr-only">Menu</span>
+<span class="nav-toggle-bars" aria-hidden="true"></span>
+</button>
+
+<ul class="nav-links" id="nav-menu">
 <li><a href="index.html">Home</a></li>
-<li><a class="active" href="about.html">About</a></li>
+<li><a href="about.html" aria-current="page">About</a></li>
 <li><a href="projects.html">Projects</a></li>
-<li><a href="flyrank.html">FlyRank Case Study</a></li>
+<li><a href="index.html#experience">Experience</a></li>
 <li><a href="contact.html">Contact</a></li>
 </ul>
 
 </nav>
 </header>
 
-<main>
+<main id="main">
 
-<section class="about-grid">
+<section class="page-head" aria-labelledby="about-h">
+<p class="eyebrow">Profile</p>
+<h1 id="about-h">About</h1>
+</section>
 
-<img src="images/profile.jpg" alt="Photo of Wajiha Waqar" class="about-photo">
+<section class="about">
 
-<div class="about-text">
-
-<h1>About Me</h1>
-
-<p>
-I am currently completing my Bachelor's in Information Technology while developing practical
-skills in Machine Learning, Data Engineering, and AI research.
-</p>
-
-<p>
-My work focuses on building explainable decision-support systems using reliable data rather than
-black-box solutions.
-</p>
-
-<p>
-I enjoy solving complex real-world problems and aim to contribute to research at the intersection
-of Artificial Intelligence, Optimization, and Quantitative Finance.
-</p>
-
+<aside class="about-aside" aria-label="Profile summary">
+<img class="about-photo" src="images/profile.jpg" alt="Portrait of Wajiha Waqar" width="320" height="320">
+<dl class="facts">
+<div><dt>Studying</dt><dd>Information Technology (Bachelor's)</dd></div>
+<div><dt>Focus</dt><dd>Machine learning, data engineering, AI research</dd></div>
+<div><dt>Direction</dt><dd>Master's in AI &rarr; PhD in Operations Research &rarr; Quantitative Research</dd></div>
+<div><dt>Experience</dt><dd>FlyRank &middot; EDEX Group of Chakwal</dd></div>
+</dl>
 <a href="resume/Wajiha_Waqar_Resume.pdf" class="btn-primary" download>Download Resume</a>
+</aside>
 
+<div class="about-main">
+
+<div class="about-block">
+<h2>Biography</h2>
+<div class="prose">
+<p>I am currently completing my Bachelor's in Information Technology while developing practical skills in Machine Learning, Data Engineering, and AI research.</p>
+<p>My work focuses on building explainable decision-support systems using reliable data rather than black-box solutions.</p>
+<p>I enjoy solving complex real-world problems and aim to contribute to research at the intersection of Artificial Intelligence, Optimization, and Quantitative Finance.</p>
+</div>
 </div>
 
-</section>
-
-<section class="subsection">
-
-<h2>Career Goals</h2>
-
-<div class="timeline">
-<div class="timeline-step">Bachelor's in IT</div>
-<span class="timeline-arrow">&darr;</span>
-<div class="timeline-step">Master's in Artificial Intelligence</div>
-<span class="timeline-arrow">&darr;</span>
-<div class="timeline-step">PhD in Operations Research</div>
-<span class="timeline-arrow">&darr;</span>
-<div class="timeline-step">Quantitative Research</div>
+<div class="about-block reveal">
+<h2>Research interests</h2>
+<ol class="index-list">
+<li>Artificial Intelligence</li>
+<li>Machine Learning</li>
+<li>Operations Research</li>
+<li>Optimization</li>
+<li>Decision Support Systems</li>
+<li>Quantitative Finance</li>
+<li>Data Engineering</li>
+</ol>
 </div>
 
-</section>
-
-<section class="subsection">
-
-<h2>Research Interests</h2>
-
-<div class="tag-grid">
-<div class="tag accent">Artificial Intelligence</div>
-<div class="tag accent">Machine Learning</div>
-<div class="tag accent">Operations Research</div>
-<div class="tag accent">Optimization</div>
-<div class="tag accent">Decision Support Systems</div>
-<div class="tag accent">Quantitative Finance</div>
-<div class="tag accent">Data Engineering</div>
+<div class="about-block reveal">
+<h2>Working principles</h2>
+<p class="lede">Drawn from the lessons recorded in the FlyRank case study.</p>
+<ul class="principles">
+<li>Machine learning should always outperform an understandable baseline.</li>
+<li>Transparent rules improve trust and explainability.</li>
+<li>Feature leakage must always be avoided.</li>
+<li>Signal validation is essential before model development.</li>
+</ul>
 </div>
 
-</section>
+<div class="about-block reveal">
+<h2>Academic path</h2>
+<ol class="path-v">
+<li><span>Now</span>Bachelor's in IT</li>
+<li><span>Next</span>Master's in Artificial Intelligence</li>
+<li><span>Then</span>PhD in Operations Research</li>
+<li><span>Goal</span>Quantitative Research</li>
+</ol>
+</div>
 
-<section class="subsection">
-
+<div class="about-block reveal">
 <h2>Skills</h2>
-
-<div class="skill-grid">
-<div class="skill-card">Python</div>
-<div class="skill-card">SQL</div>
-<div class="skill-card">DuckDB</div>
-<div class="skill-card">Pandas</div>
-<div class="skill-card">Machine Learning</div>
-<div class="skill-card">Git</div>
-<div class="skill-card">HTML</div>
-<div class="skill-card">CSS</div>
+<div class="capmap capmap--2">
+<div class="cap">
+<h3><span class="cap-n">01</span>Programming &amp; Software</h3>
+<ul class="cap-list"><li>Python</li><li>SQL</li><li>Git</li><li>HTML &amp; CSS</li></ul>
+</div>
+<div class="cap">
+<h3><span class="cap-n">02</span>ML &amp; Data</h3>
+<ul class="cap-list"><li>Machine Learning</li><li>Pandas</li><li>DuckDB</li></ul>
+</div>
+</div>
 </div>
 
+</div>
 </section>
 
 </main>
-
-<footer>
-<p>&copy; 2026 Wajiha Waqar &mdash; Built with HTML, CSS and GitHub Pages.</p>
+<footer class="site-footer">
+<div class="footer-inner">
+<p>&copy; 2026 Wajiha Waqar</p>
+<p>Built with HTML, CSS and GitHub Pages.</p>
+</div>
 </footer>
 
 <script src="script.js"></script>

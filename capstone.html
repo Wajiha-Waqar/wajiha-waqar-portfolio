@@ -5,11 +5,14 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Case study: a leakage-aware, time-split ranking model for prioritizing content-refresh review, evaluated on a held-out future month.">
+<meta name="theme-color" content="#F9FAFB">
 
 <title>Leakage-Aware Content Refresh Scoring | Wajiha Waqar</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=Inter:wght@400;500;600&amp;family=Source+Serif+4:wght@400;500;600&amp;display=swap" rel="stylesheet">
 
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
@@ -17,34 +20,44 @@
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <link rel="manifest" href="site.webmanifest">
 
+<script>document.documentElement.classList.add('js');</script>
 <link rel="stylesheet" href="style.css">
 
 </head>
 
 <body>
 
-<header>
-<nav class="navbar">
+<a class="skip-link" href="#main">Skip to content</a>
 
-<div class="nav-logo">
-<img src="images/Portfolio_logo.svg" alt="Portfolio Logo">
+<header class="site-header">
+<nav class="navbar" aria-label="Primary">
+
+<a class="nav-logo" href="index.html">
+<img src="images/Portfolio_logo.svg" alt="" width="30" height="30">
 <span>Wajiha Waqar</span>
-</div>
+</a>
 
-<ul class="nav-links">
+<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu">
+<span class="sr-only">Menu</span>
+<span class="nav-toggle-bars" aria-hidden="true"></span>
+</button>
+
+<ul class="nav-links" id="nav-menu">
 <li><a href="index.html">Home</a></li>
 <li><a href="about.html">About</a></li>
-<li><a href="projects.html">Projects</a></li>
-<li><a href="flyrank.html">FlyRank Case Study</a></li>
+<li><a href="projects.html" aria-current="true">Projects</a></li>
+<li><a href="index.html#experience">Experience</a></li>
 <li><a href="contact.html">Contact</a></li>
 </ul>
 
 </nav>
 </header>
 
-<main>
+<main id="main">
 
 <section class="case-header">
+
+<p class="case-back"><a href="projects.html">&larr; Projects</a></p>
 
 <h1>Leakage-Aware Content Refresh Opportunity Scoring</h1>
 <p>FlyRank ML Internship &bull; Capstone &bull; Machine Learning Track</p>
@@ -125,6 +138,7 @@ The selected Random Forest was evaluated against a fixed Week-4 baseline on the 
 March&rarr;April future test set (positive-class base rate 23.74%).
 </p>
 
+<div class="table-wrap" role="region" aria-label="Results table" tabindex="0">
 <table class="data-table">
 <thead>
 <tr>
@@ -140,6 +154,7 @@ March&rarr;April future test set (positive-class base rate 23.74%).
 <tr><td>Average Precision</td><td>0.3807</td><td>0.4838</td></tr>
 </tbody>
 </table>
+</div>
 
 <p>
 Relative to the 23.74% base rate, that's roughly 2.7&ndash;3.2&times; concentration of the
@@ -209,8 +224,11 @@ recommends.</li>
 
 </main>
 
-<footer>
-<p>&copy; 2026 Wajiha Waqar &mdash; Built with HTML, CSS and GitHub Pages.</p>
+<footer class="site-footer">
+<div class="footer-inner">
+<p>&copy; 2026 Wajiha Waqar</p>
+<p>Built with HTML, CSS and GitHub Pages.</p>
+</div>
 </footer>
 
 <script src="script.js"></script>
