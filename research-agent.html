@@ -8,7 +8,7 @@
 <meta name="description" content="Case study: an MVP research-assistant workflow combining NotebookLM, Claude and ChatGPT for source-grounded academic research.">
 <meta name="theme-color" content="#F9FAFB">
 
-<title>Research Paper Assistant Agent | Wajiha Waqar</title>
+<title>Research Paper Assistant Workflow | Wajiha Waqar</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -46,6 +46,7 @@
 <li><a href="index.html">Home</a></li>
 <li><a href="about.html">About</a></li>
 <li><a href="projects.html" aria-current="true">Projects</a></li>
+<li><a href="index.html#research">Research</a></li>
 <li><a href="index.html#experience">Experience</a></li>
 <li><a href="contact.html">Contact</a></li>
 </ul>
@@ -59,10 +60,10 @@
 
 <p class="case-back"><a href="projects.html">&larr; Projects</a></p>
 
-<span class="badge">Coming Soon &mdash; MVP Built</span>
+<div class="state-row"><span class="state state--done">MVP tested</span><span class="state state--planned">Extensions planned</span></div>
 
-<h1>Research Paper Assistant Agent</h1>
-<p>AI Agent Design &bull; NotebookLM &bull; Claude Project &bull; ChatGPT &bull; Academic Research</p>
+<h1>Research Paper Assistant Workflow</h1>
+<p>Prompt-chaining workflow &bull; NotebookLM &bull; Claude Projects &bull; ChatGPT &bull; Academic research</p>
 
 </section>
 
@@ -82,7 +83,7 @@ A prior workflow audit had already classified related research tasks by how much
 was appropriate: literature review summaries were marked <strong>"Collaborate with AI"</strong>,
 since AI can summarize papers but relevance and accuracy still need to be verified by hand, while
 reading research papers itself was marked <strong>"Just Me"</strong>, since understanding and
-critical thinking can't be delegated. The agent was designed around that boundary &mdash; assist
+critical thinking can't be delegated. The workflow was designed around that boundary &mdash; assist
 with the repetitive parts, leave the judgment calls to the researcher.
 </p>
 
@@ -93,8 +94,8 @@ with the repetitive parts, leave the judgment calls to the researcher.
 <h2>My Role</h2>
 
 <ul>
-<li>Defined the agent's job-to-be-done, target user, and expected usage frequency</li>
-<li>Specified inputs and outputs, required tools, and a free-tier access plan for each tool</li>
+<li>Defined the assistant's job-to-be-done, target user, and expected usage frequency</li>
+<li>Specified inputs, outputs, responsibilities and tool-access boundaries, including a free-tier access plan for each tool</li>
 <li>Wrote a draft system prompt with explicit academic-integrity rules &mdash; never invent
 citations, distinguish facts from assumptions, state when evidence is insufficient</li>
 <li>Defined five evaluation cases covering literature review, outlining, revision, comparison
@@ -103,6 +104,7 @@ tables, and feedback on a completed draft</li>
 not an agent, using Anthropic's definitions from <em>Building Effective Agents</em></li>
 <li>Built and tested an MVP end-to-end: five research papers &rarr; NotebookLM &rarr; Claude
 &rarr; ChatGPT &rarr; formatted literature review</li>
+<li>Evaluated the MVP output for citation accuracy, unsupported claims, summarization quality and formatting</li>
 <li>Logged four build iterations, fixing unsupported claims, oversized summaries, and
 inconsistent formatting along the way</li>
 <li>Identified risks and guardrails, including required human review before any submission</li>
@@ -114,27 +116,33 @@ inconsistent formatting along the way</li>
 
 <h2>Tools</h2>
 
-<p><strong>Used in the MVP</strong></p>
-
 <div class="tag-grid">
 <div class="tag">NotebookLM</div>
 <div class="tag">Claude Project</div>
 <div class="tag">ChatGPT</div>
 </div>
 
-<p style="margin-top:28px;"><strong>Planned, not yet implemented</strong></p>
-
-<div class="tag-grid">
-<div class="tag accent">Zotero</div>
-<div class="tag accent">GitHub storage</div>
-<div class="tag accent">Automatic citation management</div>
-</div>
-
-<p style="margin-top:22px;">
+<p class="stack-top">
 NotebookLM grounds responses in uploaded PDF sources rather than relying on model memory, Claude
 handles the academic reasoning and drafting, and ChatGPT improves formatting and readability.
 Each tool is responsible for one stage of the pipeline.
 </p>
+
+</section>
+
+<section class="case-section">
+
+<h2>Implementation status</h2>
+
+<p>This is a workflow, not an autonomous agent, and the page keeps what is built separate from what is only planned.</p>
+
+<ul class="matrix">
+<li><span class="state state--done">Implemented</span>NotebookLM &rarr; Claude &rarr; ChatGPT workflow</li>
+<li><span class="state state--done">Implemented</span>Academic-integrity rules and five evaluation cases</li>
+<li><span class="state state--done">Tested</span>MVP run on five research papers</li>
+<li><span class="state state--planned">Planned</span>Zotero integration, GitHub storage, automatic citation management (not implemented)</li>
+<li><span class="state state--note">Required</span>Human verification of citations and claims</li>
+</ul>
 
 </section>
 
@@ -160,7 +168,7 @@ download the original file.
 
 <div class="file-card">
 <h3>Build Report</h3>
-<p>MVP scope, workflow diagram, live tool connection, end-to-end demonstration, build log across four iterations, and the final agent output.</p>
+<p>MVP scope, workflow diagram, live tool connection, end-to-end demonstration, build log across four iterations, and the final output.</p>
 <div class="file-actions">
 <button class="btn-secondary-sm" onclick="previewDoc('assets/Build_the_Agent.docx', 'Build Report')">Preview</button>
 <a class="btn-primary-sm" href="assets/Build_the_Agent.docx" download>Download</a>

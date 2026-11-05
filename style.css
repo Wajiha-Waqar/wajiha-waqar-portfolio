@@ -558,3 +558,123 @@ main > section + section::before{
 
 /* image sizing helper (width/height attributes reserve space; aspect-ratio keeps it stable) */
 .shot img{height:auto}
+
+
+/* =====================================================================
+   v3 additions: status vocabulary, results chart, feature rows,
+   research areas, education. (Appended; earlier rules unchanged.)
+   ===================================================================== */
+
+/* ---------- 20. Status vocabulary (implemented / proposed / in progress / planned) ---------- */
+.state{
+  display:inline-block;white-space:nowrap;
+  font-family:var(--font-mono);font-size:.6875rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;
+  padding:.2rem .5rem;border-radius:2px;border:1px solid transparent;
+}
+.state--done{color:var(--status);background:var(--status-soft)}
+.state--proposed{color:var(--accent);background:var(--accent-soft)}
+.state--wip{color:#92400E;background:#FEF3C7}
+.state--planned{color:var(--faint);background:transparent;border:1px dashed var(--rule-strong)}
+.state--note{color:var(--ink-2);background:#EEF0F3}
+.state-row{display:flex;flex-wrap:wrap;gap:var(--sp-2);align-items:center}
+.legend{display:flex;flex-wrap:wrap;gap:var(--sp-2) var(--sp-4);align-items:center;font-size:.8125rem;color:var(--muted)}
+.legend > span{display:inline-flex;align-items:center;gap:var(--sp-2)}
+
+.matrix{list-style:none;padding:0;display:grid;border:1px solid var(--rule);border-radius:var(--radius);background:var(--surface)}
+.matrix li{
+  display:grid;grid-template-columns:7.5rem minmax(0,1fr);gap:var(--sp-3);align-items:baseline;
+  padding:var(--sp-3) var(--sp-4);border-top:1px solid var(--rule);color:var(--ink-2);font-size:.9375rem;
+}
+.matrix li:first-child{border-top:0}
+.matrix li > .state{justify-self:start}
+
+/* ---------- 21. Results chart (pure CSS, no dependency) ---------- */
+.chart{background:var(--surface);border:1px solid var(--rule);border-radius:var(--radius);padding:var(--sp-5)}
+.chart figcaption{margin-bottom:var(--sp-3)}
+.chart-key{display:flex;flex-wrap:wrap;gap:var(--sp-2) var(--sp-4);margin-bottom:var(--sp-4);font-family:var(--font-mono);font-size:.75rem;color:var(--ink-2)}
+.key{display:inline-flex;align-items:center;gap:.4rem}
+.key::before{content:"";width:12px;height:12px;border-radius:2px;background:var(--c)}
+.key--base{--c:#6B7585}
+.key--rf{--c:var(--accent)}
+.key--ref::before{width:0;height:12px;border-left:2px dashed var(--faint);border-radius:0;background:none}
+.chart-rows{display:grid;gap:var(--sp-4)}
+.crow{display:grid;grid-template-columns:7rem minmax(0,1fr);gap:var(--sp-3);align-items:center}
+.clabel{font-family:var(--font-mono);font-size:.75rem;color:var(--ink-2)}
+.cbars{position:relative;display:grid;gap:4px}
+/* dashed line = positive-class base rate (0.2374), the level a random ranking would reach */
+.cbars::after{content:"";position:absolute;top:-3px;bottom:-3px;left:23.74%;border-left:1.5px dashed var(--faint);pointer-events:none}
+.bar{
+  height:22px;width:calc(var(--v) * 100%);min-width:2.75rem;
+  display:flex;align-items:center;justify-content:flex-end;padding-right:.4rem;
+  border-radius:0 2px 2px 0;color:#fff;font-family:var(--font-mono);font-size:.6875rem;
+}
+.bar--base{background:#6B7585}
+.bar--rf{background:var(--accent)}
+.chart-note{margin-top:var(--sp-4);font-size:.8125rem;color:var(--muted);max-width:var(--measure)}
+details.more{margin-top:var(--sp-4)}
+details.more summary{cursor:pointer;font-weight:500;font-size:.9375rem;color:var(--accent)}
+details.more[open] summary{margin-bottom:var(--sp-2)}
+
+/* diagram variants (conceptual / proposed steps) */
+.diagram li.is-proposed{border-left-style:dashed;background:var(--accent-soft)}
+.diagram li.is-boundary{border-left-color:var(--faint);border-left-style:dotted}
+.diagram .note{margin-top:var(--sp-3);font-family:var(--font-sans);font-size:.75rem;color:var(--muted)}
+
+/* ---------- 22. Hero (v3) ---------- */
+.hero-headline{font-family:var(--font-serif);font-size:clamp(1.5rem,3.2vw,2.125rem);font-weight:500;line-height:1.2;letter-spacing:-.015em;max-width:26ch;color:var(--ink)}
+.hero .eyebrow{letter-spacing:.06em}
+.hero h1{font-size:clamp(2.25rem,5vw,3.25rem)}
+.profile .facts a{font-weight:500}
+
+/* ---------- 23. Featured project rows (home) ---------- */
+.feature{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:var(--sp-5) var(--sp-7);align-items:start;padding-block:var(--sp-7);border-top:1px solid var(--rule)}
+.feature:first-of-type{border-top:0;padding-top:var(--sp-5)}
+.feature:last-of-type{padding-bottom:0}
+.feature-main{display:grid;gap:var(--sp-3);justify-items:start}
+.feature-main p{color:var(--ink-2);max-width:var(--measure)}
+.feature-visual{min-width:0}
+.more-link{margin-top:var(--sp-5)}
+
+/* ---------- 24. Research areas (navy band) ---------- */
+.areas{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--sp-5)}
+.area{position:relative;border-top:1px solid var(--navy-rule);padding-top:var(--sp-4)}
+.area-k{font-family:var(--font-mono);font-size:.75rem;letter-spacing:.1em;color:var(--on-navy-muted)}
+.area h3{color:#fff;font-size:1.25rem;margin:var(--sp-2) 0 var(--sp-3)}
+.area ul{list-style:none;padding:0;display:grid}
+.area li{padding:.45rem 0;border-top:1px solid var(--navy-rule);font-size:.9375rem;color:var(--on-navy)}
+.area li:first-child{border-top:0}
+.area:not(:last-child)::after{content:"\2192";position:absolute;right:-1.15rem;top:.85rem;color:var(--on-navy-muted)}
+.band-note{margin-top:var(--sp-6);padding-top:var(--sp-4);border-top:1px dashed var(--navy-rule);color:var(--on-navy-muted);font-size:.9375rem;max-width:var(--measure)}
+
+/* ---------- 25. Education ---------- */
+.edu{display:grid;grid-template-columns:minmax(0,12rem) minmax(0,1fr);gap:var(--sp-3) var(--sp-7);padding-block:var(--sp-5);border-top:1px solid var(--rule)}
+.edu-when{font-family:var(--font-mono);font-size:.8125rem;color:var(--faint)}
+.edu-body{display:grid;gap:var(--sp-3)}
+.edu-body p{color:var(--ink-2);max-width:var(--measure)}
+.goal-path{list-style:none;padding:0;display:flex;flex-wrap:wrap;gap:var(--sp-2) var(--sp-3);align-items:center}
+.goal-path li + li::before{content:"\2192";margin-right:var(--sp-3);color:var(--faint)}
+
+.question{margin:var(--sp-4) 0;padding:var(--sp-4) var(--sp-5);border-left:3px solid var(--accent);background:var(--accent-soft);font-family:var(--font-serif);font-size:1.25rem;line-height:1.4;color:var(--ink);max-width:var(--measure)}
+.case-header .state-row{margin-bottom:var(--sp-1)}
+
+@media (max-width:900px){
+  .feature{grid-template-columns:1fr;padding-block:var(--sp-6)}
+  .areas{grid-template-columns:1fr}
+  .area:not(:last-child)::after{display:none}
+  .edu{grid-template-columns:1fr}
+}
+@media (max-width:600px){
+  .matrix li{grid-template-columns:1fr;gap:var(--sp-1)}
+  .crow{grid-template-columns:1fr;gap:var(--sp-1)}
+  .chart{padding:var(--sp-4)}
+}
+
+/* ---------- 26. Utilities (v3) ---------- */
+.muted{color:var(--muted)}
+.stack-top{margin-top:var(--sp-5)}
+.fig-title{font-family:var(--font-mono);font-size:.75rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--faint)}
+.title-long{font-size:clamp(1.5rem,3.2vw,2.25rem);line-height:1.2;max-width:34ch}
+
+/* long titles (e.g. the research project) read better with the title above the description */
+.work-row--stack{grid-template-columns:1fr}
+.work-row--stack .work-row-head h3{max-width:48ch}

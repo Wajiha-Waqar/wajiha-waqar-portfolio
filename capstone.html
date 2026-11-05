@@ -46,6 +46,7 @@
 <li><a href="index.html">Home</a></li>
 <li><a href="about.html">About</a></li>
 <li><a href="projects.html" aria-current="true">Projects</a></li>
+<li><a href="index.html#research">Research</a></li>
 <li><a href="index.html#experience">Experience</a></li>
 <li><a href="contact.html">Contact</a></li>
 </ul>
@@ -117,12 +118,13 @@ any causal refresh claim</li>
 <div class="tag-grid">
 <div class="tag">Python</div>
 <div class="tag">Pandas</div>
+<div class="tag">NumPy</div>
 <div class="tag">Scikit-learn</div>
 <div class="tag">Random Forest</div>
 <div class="tag">Jupyter Notebook</div>
 </div>
 
-<p style="margin-top:22px;">
+<p class="stack-top">
 The analysis ran on the FlyRank internship warehouse (<code>fact_content_daily_performance</code>,
 ~78.8M rows) combining Google Search Console signals with GA4 engagement data.
 </p>
@@ -138,6 +140,19 @@ The selected Random Forest was evaluated against a fixed Week-4 baseline on the 
 March&rarr;April future test set (positive-class base rate 23.74%).
 </p>
 
+<figure class="chart">
+<figcaption><span class="fig-title">Held-out evaluation, March&rarr;April</span></figcaption>
+<div class="chart-key" aria-hidden="true"><span class="key key--base">Week-4 baseline</span><span class="key key--rf">Random Forest</span><span class="key key--ref">Base rate 0.2374</span></div>
+<div class="chart-rows" role="img" aria-label="Grouped bar chart. Precision@20: baseline 0.4, Random Forest 0.65; Precision@50: baseline 0.52, Random Forest 0.7; Precision@100: baseline 0.54, Random Forest 0.76; Avg. Precision: baseline 0.3807, Random Forest 0.4838. Dashed reference line at the 0.2374 base rate.">
+<div class="crow" aria-hidden="true"><span class="clabel">Precision@20</span><div class="cbars"><div class="bar bar--base" style="--v:0.4">0.40</div><div class="bar bar--rf" style="--v:0.65">0.65</div></div></div>
+<div class="crow" aria-hidden="true"><span class="clabel">Precision@50</span><div class="cbars"><div class="bar bar--base" style="--v:0.52">0.52</div><div class="bar bar--rf" style="--v:0.7">0.70</div></div></div>
+<div class="crow" aria-hidden="true"><span class="clabel">Precision@100</span><div class="cbars"><div class="bar bar--base" style="--v:0.54">0.54</div><div class="bar bar--rf" style="--v:0.76">0.76</div></div></div>
+<div class="crow" aria-hidden="true"><span class="clabel">Avg. Precision</span><div class="cbars"><div class="bar bar--base" style="--v:0.3807">0.3807</div><div class="bar bar--rf" style="--v:0.4838">0.4838</div></div></div>
+</div>
+<p class="chart-note">Dashed line: the 23.74% positive-class base rate, the level a random ranking would reach. Higher is better.</p>
+</figure>
+
+<details class="more"><summary>View the results as a table</summary>
 <div class="table-wrap" role="region" aria-label="Results table" tabindex="0">
 <table class="data-table">
 <thead>
@@ -155,6 +170,7 @@ March&rarr;April future test set (positive-class base rate 23.74%).
 </tbody>
 </table>
 </div>
+</details>
 
 <p>
 Relative to the 23.74% base rate, that's roughly 2.7&ndash;3.2&times; concentration of the

@@ -5,7 +5,7 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Projects and capstone case studies by Wajiha Waqar: a research-paper assistant workflow and a leakage-aware content-refresh ranking model.">
+<meta name="description" content="Featured projects by Wajiha Waqar: a research-paper assistant workflow, a leakage-aware ranking model, and ongoing research on prompt-injection security in MCP-based AI agents.">
 <meta name="theme-color" content="#F9FAFB">
 
 <title>Projects | Wajiha Waqar</title>
@@ -46,6 +46,7 @@
 <li><a href="index.html">Home</a></li>
 <li><a href="about.html">About</a></li>
 <li><a href="projects.html" aria-current="page">Projects</a></li>
+<li><a href="index.html#research">Research</a></li>
 <li><a href="index.html#experience">Experience</a></li>
 <li><a href="contact.html">Contact</a></li>
 </ul>
@@ -58,10 +59,115 @@
 <section class="page-head" aria-labelledby="projects-h">
 <p class="eyebrow">Work</p>
 <h1 id="projects-h">Projects</h1>
+<p class="lede">Three featured projects as structured case studies, followed by other work and what is planned next.</p>
+<p class="legend" aria-label="Status labels used on this site">
+<span><span class="state state--done">Implemented</span></span>
+<span><span class="state state--proposed">Proposed</span></span>
+<span><span class="state state--wip">In progress</span></span>
+<span><span class="state state--planned">Planned</span></span>
+</p>
+</section>
+
+<section id="featured" aria-labelledby="feat-h">
+<header class="section-head"><p class="eyebrow">Featured</p><h2 id="feat-h">Featured case studies</h2></header>
+<article class="case reveal" id="project-01">
+<header class="case-head">
+<p class="case-index">Project 01</p>
+<div class="state-row"><span class="state state--done">MVP tested</span><span class="state state--planned">Extensions planned</span></div>
+<h3 class="case-title">Research Paper Assistant Workflow</h3>
+<ul class="labels" aria-label="Project categories"><li class="label label--research">Research</li><li class="label">AI / ML</li><li class="label">Systems</li></ul>
+</header>
+<div class="case-grid">
+<dl class="case-facts">
+<div><dt>Problem</dt><dd>Academic research means switching between several AI tools and research sites for literature review, summarization, drafting and citation organization, while every claim must stay grounded in real papers.</dd></div>
+<div><dt>Approach</dt><dd>A structured workflow, classified as prompt-chaining rather than an autonomous agent. Each tool has one responsibility: NotebookLM grounds answers in uploaded PDFs, Claude reasons and drafts, ChatGPT improves formatting. Inputs, outputs, responsibilities and tool-access boundaries are defined.</dd></div>
+<div><dt>Methods</dt><dd>Academic-integrity rules in a draft system prompt, five evaluation cases, risks and guardrails, and a four-iteration build log. The MVP output was evaluated for citation accuracy, unsupported claims, summarization quality and formatting.</dd></div>
+<div><dt>Outcome</dt><dd>An MVP tested on five research papers. Human verification remains necessary. Zotero integration, GitHub storage and automatic citation management are planned and not implemented.</dd></div>
+</dl>
+<aside class="case-side" aria-label="Project 01 details">
+<figure class="diagram">
+<figcaption><span class="fig-title">Workflow (prompt-chaining)</span></figcaption>
+<ol>
+<li>Uploaded research papers (PDF)</li>
+<li>NotebookLM<small>source-grounded summaries</small></li>
+<li>Claude Project<small>reasoning and drafting</small></li>
+<li>ChatGPT<small>formatting and readability</small></li>
+<li>Human verification<small>citations, claims, final approval</small></li>
+</ol>
+</figure>
+<div class="side-block"><h4>Technology</h4><ul class="tech"><li>NotebookLM</li><li>Claude Projects</li><li>ChatGPT</li></ul></div>
+<p class="case-links"><a class="btn-primary" href="research-agent.html">Read case study</a></p>
+</aside>
+</div>
+</article>
+<article class="case reveal" id="project-02">
+<header class="case-head">
+<p class="case-index">Project 02</p>
+<div class="state-row"><span class="state state--done">Completed</span></div>
+<h3 class="case-title">Leakage-Aware Content Refresh Opportunity Scoring</h3>
+<ul class="labels" aria-label="Project categories"><li class="label label--research">Research</li><li class="label">AI / ML</li><li class="label">Data</li></ul>
+</header>
+<div class="case-grid">
+<dl class="case-facts">
+<div><dt>Problem</dt><dd>Content teams have more pages worth reviewing than they can inspect. Can March-only, non-label-derived search and engagement signals rank content that later meets a predefined refresh-review condition in April?</dd></div>
+<div><dt>Approach</dt><dd>A predictive ranking and triage system to support human review, not automated publishing. Month-to-month development panels (Jan&rarr;Feb, Feb&rarr;Mar) and a held-out future test window (Mar&rarr;Apr).</dd></div>
+<div><dt>Methods</dt><dd>26 engineered features from search position, GA4 engagement and traffic-channel signals; a leakage audit; Logistic Regression and Random Forest compared with client-grouped validation and selected on Average Precision; a tiered review queue with reason codes.</dd></div>
+<div><dt>Outcome</dt><dd>Random Forest outperformed a fixed Week-4 baseline on the held-out month (Precision@20 0.65 against 0.40; Average Precision 0.4838 against 0.3807). This shows improved ranking performance, not a causal effect of refreshing content.</dd></div>
+</dl>
+<aside class="case-side" aria-label="Project 02 details">
+<figure class="diagram">
+<figcaption><span class="fig-title">Evaluation design</span></figcaption>
+<ol>
+<li>Development panels<small>Jan&rarr;Feb, Feb&rarr;Mar</small></li>
+<li>Leakage audit<small>no future or outcome-derived fields</small></li>
+<li>Model selection<small>client-grouped validation, Average Precision</small></li>
+<li>Held-out test<small>Mar&rarr;Apr, vs. fixed baseline</small></li>
+</ol>
+</figure>
+<div class="side-block"><h4>Technology</h4><ul class="tech"><li>Python</li><li>Pandas</li><li>NumPy</li><li>Scikit-learn</li><li>Random Forest</li><li>Jupyter Notebook</li></ul></div>
+<p class="case-links">
+<a class="btn-primary" href="capstone.html">Read case study</a>
+<a class="text-link" href="https://github.com/Wajiha-Waqar/FlyRankInternship/blob/main/work/notebooks/capstone.ipynb" target="_blank" rel="noopener">Notebook<span class="sr-only"> (opens in new tab)</span></a>
+<a class="text-link" href="https://wajiha-waqar.github.io/FlyRankInternship/" target="_blank" rel="noopener">Paper<span class="sr-only"> (opens in new tab)</span></a>
+</p>
+</aside>
+</div>
+</article>
+<article class="case reveal" id="project-03">
+<header class="case-head">
+<p class="case-index">Project 03</p>
+<div class="state-row"><span class="state state--wip">Research in progress</span><span class="state state--proposed">Design and defense proposed</span></div>
+<h3 class="case-title">Evaluating Cross-Session Prompt Injection in MCP-Based AI Agents: Persistence, Security Defenses, and Tool-Use Outcomes</h3>
+<ul class="labels" aria-label="Research areas"><li class="label label--research">Research</li><li class="label">AI security</li><li class="label">Systems</li></ul>
+</header>
+<div class="case-grid">
+<dl class="case-facts">
+<div><dt>Problem</dt><dd>LLM agents that act through tools can be manipulated by attacker-controlled content (prompt injection). This project studies a cross-session variant: attacker-controlled content held in persistent application state that survives a session boundary.</dd></div>
+<div><dt>Question</dt><dd>Does attacker-controlled persistent state that survives a session boundary change the likelihood of unintended MCP-mediated actions?</dd></div>
+<div><dt>Defense</dt><dd>Proposed: deterministic provenance and trust policies that identify untrusted persistent content before sensitive tool execution.</dd></div>
+<div><dt>Status</dt><dd>Research in progress. The experimental design and defense concept are proposed. No results, publications or performance claims are reported.</dd></div>
+</dl>
+<aside class="case-side" aria-label="Project 03 details">
+<figure class="diagram">
+<figcaption><span class="fig-title">Proposed experimental design (conceptual)</span></figcaption>
+<ol>
+<li>Session 1<small>attacker-controlled content reaches persistent application state</small></li>
+<li class="is-boundary">Session boundary<small>the persistent state survives</small></li>
+<li>Session 2<small>persisted content is available to the agent</small></li>
+<li class="is-proposed">Proposed defense<small>provenance and trust policies, checked before sensitive tool execution</small></li>
+<li>MCP tool call<small>measured outcome: unintended action likelihood</small></li>
+</ol>
+<p class="note">Conceptual illustration of the study design, not a description of a finished implementation.</p>
+</figure>
+<div class="side-block"><h4>Research areas</h4><ul class="tech"><li>LLM security</li><li>Prompt injection</li><li>AI agent security</li><li>Model Context Protocol (MCP)</li></ul></div>
+<p class="case-links"><a class="btn-primary" href="fyp-research.html">Read research overview</a></p>
+</aside>
+</div>
+</article>
 </section>
 
 <section aria-labelledby="proj-h">
-<header class="section-head"><p class="eyebrow">Projects</p><h2 id="proj-h">Selected projects</h2></header>
+<header class="section-head"><p class="eyebrow">Other work</p><h2 id="proj-h">Other projects</h2></header>
 <ul class="work-list">
 
 <li class="work-row reveal">
@@ -90,7 +196,7 @@
 <div class="work-row-head">
 <h3>Disaster Alert System</h3>
 <ul class="labels"><li class="label">AI / ML</li><li class="label">Systems</li></ul>
-<span class="status">Coming soon</span>
+<span class="state state--planned">Planned</span>
 </div>
 <div class="work-row-body">
 <p>Personal project focused on AI-powered multi-hazard disaster monitoring and decision support.</p>
@@ -100,108 +206,25 @@
 </ul>
 </section>
 
-<section id="capstones" aria-labelledby="cap-h">
-<header class="section-head">
-<p class="eyebrow">Capstones</p>
-<h2 id="cap-h">Capstone case studies</h2>
-</header>
-<article class="case reveal" id="project-01">
-<header class="case-head">
-<p class="case-index">Project 01</p>
-<h3 class="case-title">Research Paper Assistant Agent</h3>
-<ul class="labels" aria-label="Project categories">
-<li class="label label--research">Research</li><li class="label">AI / ML</li><li class="label">Systems</li>
-</ul>
-</header>
-<div class="case-grid">
-<dl class="case-facts">
-<div><dt>Problem</dt><dd>Academic research means switching between several AI tools and research sites for literature review, summarization, drafting and citation organization, while every claim still needs to stay grounded in real papers.</dd></div>
-<div><dt>Approach</dt><dd>The pipeline was classified as a workflow (prompt-chaining), not an agent. Each tool has one responsibility: NotebookLM grounds answers in uploaded PDF sources, Claude handles reasoning and drafting, ChatGPT improves formatting and readability.</dd></div>
-<div><dt>Methods</dt><dd>An agent design document (job-to-be-done, inputs and outputs, tool access plan), a draft system prompt with academic-integrity rules, five evaluation cases, risks and guardrails, and a four-iteration build log.</dd></div>
-<div><dt>Outcome</dt><dd>An MVP built and tested end-to-end on five research papers. Human review remains required for citation accuracy, interpretation and final approval. Zotero and GitHub storage are planned, not implemented.</dd></div>
-</dl>
-<aside class="case-side" aria-label="Project 01 details">
-<figure class="diagram">
-<figcaption><h4>Pipeline</h4></figcaption>
-<ol>
-<li>Uploaded research papers (PDF)</li>
-<li>NotebookLM<small>source-grounded summaries</small></li>
-<li>Claude Project<small>reasoning and drafting</small></li>
-<li>ChatGPT<small>formatting and readability</small></li>
-</ol>
-</figure>
-<div class="side-block">
-<h4>Technology</h4>
-<ul class="tech"><li>NotebookLM</li><li>Claude Project</li><li>ChatGPT</li></ul>
-</div>
-<p class="case-links"><a class="btn-primary" href="research-agent.html">Read case study</a></p>
-</aside>
-</div>
-</article>
-<article class="case reveal" id="project-02">
-<header class="case-head">
-<p class="case-index">Project 02</p>
-<h3 class="case-title">Leakage-Aware Content Refresh Opportunity Scoring</h3>
-<ul class="labels" aria-label="Project categories">
-<li class="label label--research">Research</li><li class="label">AI / ML</li><li class="label">Data</li>
-</ul>
-</header>
-<div class="case-grid">
-<dl class="case-facts">
-<div><dt>Problem</dt><dd>Content teams have more pages worth reviewing than they can inspect. The question: can March-only, non-label-derived search and engagement signals rank content that later meets a predefined refresh-review condition in April?</dd></div>
-<div><dt>Approach</dt><dd>A ranking and triage system to support human review, not automated publishing. Month-to-month development panels (Jan&rarr;Feb, Feb&rarr;Mar) with a held-out future test window (Mar&rarr;Apr), so evaluation never sees the future.</dd></div>
-<div><dt>Methods</dt><dd>A 26-feature set from search position, GA4 engagement and traffic-channel signals; a final leakage audit; Logistic Regression and Random Forest compared with client-grouped validation and selected on Average Precision; a tiered review queue with reason codes.</dd></div>
-<div><dt>Outcome</dt><dd>On the held-out window (base rate 23.74%), the Random Forest reached Precision@20 of 0.65 against 0.40 for the Week-4 baseline, and Average Precision of 0.4838 against 0.3807. This supports ranking pages for review; it makes no causal claim about refreshing content.</dd></div>
-</dl>
-<aside class="case-side" aria-label="Project 02 details">
-<figure class="diagram">
-<figcaption><h4>Evaluation design</h4></figcaption>
-<ol>
-<li>Development panels<small>Jan&rarr;Feb, Feb&rarr;Mar</small></li>
-<li>Model selection<small>client-grouped validation, Average Precision</small></li>
-<li>Held-out test<small>Mar&rarr;Apr, vs. fixed baseline</small></li>
-</ol>
-</figure>
-<div class="side-block">
-<h4>Technology</h4>
-<ul class="tech"><li>Python</li><li>Pandas</li><li>Scikit-learn</li><li>Random Forest</li><li>Jupyter Notebook</li></ul>
-</div>
-<p class="case-links">
-<a class="btn-primary" href="capstone.html">Read case study</a>
-<a class="text-link" href="https://github.com/Wajiha-Waqar/FlyRankInternship/blob/main/work/notebooks/capstone.ipynb" target="_blank" rel="noopener">Notebook<span class="sr-only"> (opens in new tab)</span></a>
-<a class="text-link" href="https://wajiha-waqar.github.io/FlyRankInternship/" target="_blank" rel="noopener">Paper<span class="sr-only"> (opens in new tab)</span></a>
-</p>
-</aside>
-</div>
-</article>
-</section>
-
 <section aria-labelledby="future-h">
-<header class="section-head">
-<p class="eyebrow">Future work</p>
-<h2 id="future-h">Planned work</h2>
-</header>
+<header class="section-head"><p class="eyebrow">Future work</p><h2 id="future-h">Planned work</h2></header>
 <ul class="work-list">
 <li class="work-row is-planned reveal">
-<div class="work-row-head"><h3>Future Project</h3><span class="status">Coming soon</span></div>
+<div class="work-row-head"><h3>Future Project</h3><span class="state state--planned">Planned</span></div>
 <div class="work-row-body"><p>Reserved for an upcoming project as new coursework, research, or independent work is completed.</p></div>
 </li>
 <li class="work-row is-planned reveal">
-<div class="work-row-head"><h3>Independent Project</h3><span class="status">Coming soon</span></div>
+<div class="work-row-head"><h3>Independent Project</h3><span class="state state--planned">Planned</span></div>
 <div class="work-row-body"><p>Reserved for an upcoming independent project outside coursework, exploring a new idea in AI or decision-support systems.</p></div>
-</li>
-<li class="work-row is-planned reveal">
-<div class="work-row-head"><h3>Open Slot</h3><span class="status">Coming soon</span></div>
-<div class="work-row-body"><p>Reserved for future work aligned with my research interests in Artificial Intelligence, Data Engineering, and Quantitative Finance.</p></div>
 </li>
 </ul>
 </section>
 
 <section class="contact-preview" aria-labelledby="code-h">
 <p class="eyebrow">Source</p>
-<h2 id="code-h">See the Code</h2>
-<p class="lede">Full source for these projects is available on GitHub.</p>
-<a href="https://github.com/Wajiha-Waqar/wajiha-waqar-portfolio" class="btn-primary" target="_blank" rel="noopener">View GitHub Profile<span class="sr-only"> (opens in new tab)</span></a>
+<h2 id="code-h">See the code</h2>
+<p class="lede">Source for these projects is available on GitHub.</p>
+<a href="https://github.com/Wajiha-Waqar" class="btn-primary" target="_blank" rel="noopener">View GitHub profile<span class="sr-only"> (opens in new tab)</span></a>
 </section>
 
 </main>

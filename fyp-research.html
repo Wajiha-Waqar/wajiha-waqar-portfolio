@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Ongoing undergraduate research on whether attacker-controlled persistent state that survives a session boundary changes unintended action likelihood in MCP-based AI agents, with a proposed provenance and trust-policy defense. No results reported yet.">
+<meta name="theme-color" content="#F9FAFB">
+
+<title>Cross-Session Prompt Injection in MCP-Based AI Agents | Wajiha Waqar</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=Inter:wght@400;500;600&amp;family=Source+Serif+4:wght@400;500;600&amp;display=swap" rel="stylesheet">
+
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+<link rel="shortcut icon" href="favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+
+<script>document.documentElement.classList.add('js');</script>
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+<nav class="navbar" aria-label="Primary">
+
+<a class="nav-logo" href="index.html">
+<img src="images/Portfolio_logo.svg" alt="" width="30" height="30">
+<span>Wajiha Waqar</span>
+</a>
+
+<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu">
+<span class="sr-only">Menu</span>
+<span class="nav-toggle-bars" aria-hidden="true"></span>
+</button>
+
+<ul class="nav-links" id="nav-menu">
+<li><a href="index.html">Home</a></li>
+<li><a href="about.html">About</a></li>
+<li><a href="projects.html" aria-current="true">Projects</a></li>
+<li><a href="index.html#research">Research</a></li>
+<li><a href="index.html#experience">Experience</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
+
+</nav>
+</header>
+
+<main id="main">
+
+<section class="case-header">
+
+<p class="case-back"><a href="projects.html">&larr; Projects</a></p>
+
+<div class="state-row"><span class="state state--wip">Research in progress</span><span class="state state--proposed">Design and defense proposed</span></div>
+
+<h1 class="title-long">Evaluating Cross-Session Prompt Injection in MCP-Based AI Agents: Persistence, Security Defenses, and Tool-Use Outcomes</h1>
+<p>Undergraduate final-year research &bull; LLM security &bull; Prompt injection &bull; AI agent security &bull; Model Context Protocol (MCP)</p>
+
+</section>
+
+<section class="case-section">
+<h2>Status at a glance</h2>
+<p>This is ongoing research. Each item below is labelled with its actual state, and nothing on this page should be read as a completed result.</p>
+<p><p class="legend" aria-label="Status labels used on this site">
+<span><span class="state state--done">Implemented</span></span>
+<span><span class="state state--proposed">Proposed</span></span>
+<span><span class="state state--wip">In progress</span></span>
+<span><span class="state state--planned">Planned</span></span>
+</p></p>
+<ul class="matrix">
+<li><span class="state state--proposed">Proposed</span>Experimental design: cross-session persistent state</li>
+<li><span class="state state--proposed">Proposed</span>Defense: deterministic provenance and trust policies</li>
+<li><span class="state state--wip">In progress</span>Research under way; no results are reported yet</li>
+</ul>
+</section>
+
+<section class="case-section">
+<h2>Research problem</h2>
+<p>
+Large language model (LLM) agents that act through tools can be manipulated by attacker-controlled content, a
+class of attack known as prompt injection. This project studies a cross-session variant: attacker-controlled
+content held in persistent application state that survives a session boundary, in agents that use the Model
+Context Protocol (MCP) to reach tools.
+</p>
+</section>
+
+<section class="case-section">
+<h2>Research question</h2>
+<p class="question">Does attacker-controlled persistent state that survives a session boundary change the likelihood of unintended MCP-mediated actions?</p>
+</section>
+
+<section class="case-section">
+<h2>Research objectives</h2>
+<ul>
+<li>Evaluate whether cross-session persistence of attacker-controlled state changes the likelihood of unintended MCP-mediated actions.</li>
+<li>Evaluate a proposed defense that uses deterministic provenance and trust policies to identify untrusted persistent content before sensitive tool execution.</li>
+<li>Examine tool-use outcomes under the conditions tested.</li>
+</ul>
+</section>
+
+<section class="case-section">
+<h2>Experimental approach <span class="state state--proposed">Proposed</span></h2>
+<p>
+The experimental design investigates whether attacker-controlled persistent state surviving a session
+boundary changes the likelihood of unintended MCP-mediated actions.
+</p>
+<figure class="diagram">
+<figcaption><span class="fig-title">Proposed experimental design (conceptual)</span></figcaption>
+<ol>
+<li>Session 1<small>attacker-controlled content reaches persistent application state</small></li>
+<li class="is-boundary">Session boundary<small>the persistent state survives</small></li>
+<li>Session 2<small>persisted content is available to the agent</small></li>
+<li class="is-proposed">Proposed defense<small>provenance and trust policies, checked before sensitive tool execution</small></li>
+<li>MCP tool call<small>measured outcome: unintended action likelihood</small></li>
+</ol>
+<p class="note">Conceptual illustration of the study design, not a description of a finished implementation.</p>
+</figure>
+</section>
+
+<section class="case-section">
+<h2>Defense concept <span class="state state--proposed">Proposed</span></h2>
+<p>
+The proposed defense uses deterministic provenance and trust policies to identify untrusted persistent content
+before sensitive tool execution. In outline: persistent content is tracked by where it came from, a trust
+policy decides whether it is trusted, and untrusted content is flagged before the agent is allowed to run a
+sensitive tool.
+</p>
+</section>
+
+<section class="case-section">
+<h2>Evaluation metrics</h2>
+<p>
+The primary outcome is the likelihood of unintended MCP-mediated actions, compared with and without
+attacker-controlled persistent state across a session boundary. The proposed defense would be assessed against the
+same outcome. Further metrics will be specified as the evaluation is finalized.
+</p>
+</section>
+
+<section class="case-section">
+<h2>Research areas, technologies and tools</h2>
+<div class="tag-grid">
+<div class="tag">LLM security</div>
+<div class="tag">Prompt injection</div>
+<div class="tag">AI agent security</div>
+<div class="tag">Model Context Protocol (MCP)</div>
+<div class="tag">Persistent application state</div>
+<div class="tag">Trust and provenance</div>
+<div class="tag">Security evaluation and defense mechanisms</div>
+</div>
+<p class="stack-top">Implementation tooling and experimental setup details will be added here as the work is documented.</p>
+</section>
+
+<section class="case-section">
+<h2>Current progress</h2>
+<ul class="matrix">
+<li><span class="state state--proposed">Proposed</span>Experimental design: cross-session attacker-controlled persistent state</li>
+<li><span class="state state--proposed">Proposed</span>Defense concept: deterministic provenance and trust policies</li>
+<li><span class="state state--wip">In progress</span>The research project itself</li>
+<li><span class="state state--planned">No results</span>No experimental results, performance figures or publications are reported on this page</li>
+</ul>
+</section>
+
+<section class="contact-preview">
+<a href="projects.html" class="btn-primary">Back to Projects</a>
+</section>
+
+</main>
+<footer class="site-footer">
+<div class="footer-inner">
+<p>&copy; 2026 Wajiha Waqar</p>
+<p>Built with HTML, CSS and GitHub Pages.</p>
+</div>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
