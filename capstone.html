@@ -61,7 +61,9 @@
 <p class="case-back"><a href="projects.html">&larr; Projects</a></p>
 
 <h1>Leakage-Aware Content Refresh Opportunity Scoring</h1>
-<p>FlyRank ML Internship &bull; Capstone &bull; Machine Learning Track</p>
+<p>Capstone &bull; 26 engineered features &bull; Temporal validation &bull; Leakage audits &bull; Model comparison</p>
+
+<p class="scope"><strong>Scope.</strong> This page covers the capstone: a leakage-aware machine-learning ranking model. It builds on the signal validation and transparent baseline described in the <a href="flyrank.html">internship case study</a>.</p>
 
 </section>
 
@@ -82,6 +84,29 @@ intended output was a ranking and triage system to support human review &mdash; 
 publishing or content-management system, and not a claim about Google's ranking algorithm or the
 causal effect of refreshing content.
 </p>
+
+</section>
+
+<section class="case-section">
+
+<h2>Methodology</h2>
+
+<p>
+From data to a ranked list for human reviewers. Each stage below was implemented in the capstone notebook.
+</p>
+
+<figure class="flow-figure">
+<figcaption><span class="fig-title">Methodology workflow</span></figcaption>
+<ol class="flow">
+<li><strong>Data sources</strong><small>FlyRank warehouse: Google Search Console signals and GA4 engagement data</small></li>
+<li><strong>Data cleaning and signal validation</strong><small>Signals checked before any modelling</small></li>
+<li><strong>Feature engineering</strong><small>26 features; outcome-derived fields excluded; final leakage audit</small></li>
+<li><strong>Model training and selection</strong><small>Logistic Regression vs. Random Forest; client-grouped validation; Average Precision</small></li>
+<li><strong>Temporal evaluation</strong><small>Development panels Jan&rarr;Feb, Feb&rarr;Mar; held-out Mar&rarr;Apr vs. fixed Week-4 baseline</small></li>
+<li class="is-output"><strong>Ranked human-review recommendations</strong><small>Tiered queue with reason codes for reviewers</small></li>
+</ol>
+<p class="flow-note">The workflow ends at a ranked list for human reviewers. It is a notebook analysis, not an automated publishing system or a production deployment.</p>
+</figure>
 
 </section>
 
@@ -183,6 +208,19 @@ content causes improvement.
 
 <section class="case-section">
 
+<h2>Limitations and interpretation</h2>
+
+<ul>
+<li>The results show improved ranking performance on the held-out window. They do not show that refreshing content causes improvement.</li>
+<li>The data are observational, and the work makes no causal refresh claim.</li>
+<li>It makes no claim about Google's ranking algorithm.</li>
+<li>The model supports human review. The review queue lists the actions that should not be automated.</li>
+</ul>
+
+</section>
+
+<section class="case-section">
+
 <h2>Evidence</h2>
 
 <div class="evidence-grid">
@@ -194,18 +232,18 @@ End-to-end analysis: data loading, temporal splits, feature engineering, the lea
 model selection, and future-window evaluation.
 </p>
 <div class="file-actions">
-<a class="btn-primary-sm" href="https://github.com/Wajiha-Waqar/FlyRankInternship/blob/main/work/notebooks/capstone.ipynb" target="_blank" rel="noopener">View on GitHub</a>
+<a class="btn-primary-sm" href="https://github.com/Wajiha-Waqar/FlyRankInternship/blob/main/work/notebooks/capstone.ipynb" target="_blank" rel="noopener">View on GitHub<span class="sr-only"> (opens in new tab)</span></a>
 </div>
 </div>
 
 <div class="file-card">
-<h3>Published Paper</h3>
+<h3>Technical paper</h3>
 <p>
 Full write-up covering the research question, methodology, results, limitations, and the
-human-review protocol.
+human-review protocol. Self-published on GitHub Pages; not peer-reviewed.
 </p>
 <div class="file-actions">
-<a class="btn-primary-sm" href="https://wajiha-waqar.github.io/FlyRankInternship/" target="_blank" rel="noopener">Read Paper</a>
+<a class="btn-primary-sm" href="https://wajiha-waqar.github.io/FlyRankInternship/" target="_blank" rel="noopener">Read paper<span class="sr-only"> (opens in new tab)</span></a>
 </div>
 </div>
 
@@ -218,8 +256,6 @@ human-review protocol.
 <h2>Lessons Learned</h2>
 
 <ul>
-<li>Outperforming a fixed baseline on a genuine future window still only supports
-decision-making &mdash; it doesn't prove causation.</li>
 <li>A leakage audit has to check for outcome-derived fields even after the obvious ones
 (impressions, CTR) are already removed.</li>
 <li>Client-grouped validation keeps a model from learning client identity instead of a general,
@@ -243,7 +279,7 @@ recommends.</li>
 <footer class="site-footer">
 <div class="footer-inner">
 <p>&copy; 2026 Wajiha Waqar</p>
-<p>Built with HTML, CSS and GitHub Pages.</p>
+<p>Built with HTML, CSS and JavaScript. Hosted on Netlify.</p>
 </div>
 </footer>
 

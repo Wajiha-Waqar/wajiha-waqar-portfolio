@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Admin | Wajiha Waqar</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=Inter:wght@400;500;600&amp;family=Source+Serif+4:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="admin.css">
+
+</head>
+
+<body class="admin">
+
+<a class="skip-link" href="#admin-main">Skip to content</a>
+
+<!-- ============================ LOGIN ============================ -->
+<div id="view-login" class="login-wrap" hidden>
+<main class="login-card" id="admin-main">
+<p class="eyebrow">Site administration</p>
+<h1>Sign in</h1>
+<p class="muted">Sign in with a GitHub access token for this repository. GitHub verifies the token on every save, so only you can change the site.</p>
+
+<form id="login-form" autocomplete="off">
+<div class="field">
+<label for="token">GitHub access token</label>
+<input id="token" type="password" spellcheck="false" autocapitalize="off" autocomplete="off" required placeholder="github_pat_…">
+</div>
+<label class="check"><input id="remember" type="checkbox"> <span>Remember me on this device <span class="muted">(keeps the token in this browser's local storage, where scripts on this site could read it. Leave off unless this is your own device.)</span></span></label>
+<p id="login-error" class="error" role="alert" hidden></p>
+<button id="login-btn" class="btn-primary" type="submit">Sign in</button>
+</form>
+
+<details class="how">
+<summary>How do I get a token?</summary>
+<ol>
+<li>GitHub &rarr; <strong>Settings</strong> &rarr; <strong>Developer settings</strong> &rarr; <strong>Personal access tokens</strong> &rarr; <strong>Fine-grained tokens</strong> &rarr; <strong>Generate new token</strong>.</li>
+<li><strong>Repository access:</strong> <em>Only select repositories</em> &rarr; choose this website's repository.</li>
+<li><strong>Permissions &rarr; Repository:</strong> <em>Contents: Read and write</em>. (Optionally <em>Pages: Read</em> to show publish status.)</li>
+<li>Choose an expiry (e.g. 90 days), generate, and paste the token above.</li>
+</ol>
+</details>
+</main>
+</div>
+
+<!-- ============================ APP ============================ -->
+<div id="view-app" hidden>
+
+<header class="admin-bar">
+<div class="bar-left">
+<strong class="bar-title">Admin</strong>
+<span id="repo-chip" class="chip"></span>
+</div>
+<div class="bar-right">
+<span id="deploy-status" class="deploy" role="status"></span>
+<a class="btn-secondary-sm" href="../" target="_blank" rel="noopener">View site<span class="sr-only"> (opens in new tab)</span></a>
+<span class="who"><img id="user-avatar" alt="" width="24" height="24"><span id="user-name"></span></span>
+<button id="btn-signout" class="btn-secondary-sm" type="button">Sign out</button>
+</div>
+</header>
+
+<div class="tabs" role="tablist" aria-label="Admin sections">
+<button class="tab" role="tab" data-tab="pages" aria-selected="true" type="button">Pages</button>
+<button class="tab" role="tab" data-tab="files" aria-selected="false" tabindex="-1" type="button">Files</button>
+<button class="tab" role="tab" data-tab="nav" aria-selected="false" tabindex="-1" type="button">Navigation</button>
+<button class="tab" role="tab" data-tab="help" aria-selected="false" tabindex="-1" type="button">Help</button>
+</div>
+
+<main class="app-main">
+
+<!-- ---------- Pages (visual editor) ---------- -->
+<div id="tab-pages" class="tabpanel" role="tabpanel">
+<div class="toolbar">
+<label class="sr-only" for="page-select">Page to edit</label>
+<select id="page-select" class="w-auto"></select>
+
+<div class="seg" role="group" aria-label="Preview width">
+<button type="button" data-w="100%" aria-pressed="true">Desktop</button>
+<button type="button" data-w="820px" aria-pressed="false">Tablet</button>
+<button type="button" data-w="390px" aria-pressed="false">Mobile</button>
+</div>
+
+<button id="btn-undo" class="btn-secondary-sm" type="button" disabled>Undo structure change</button>
+<span class="grow"></span>
+<span id="dirty-flag" class="dirty" hidden>Unsaved changes</span>
+<label class="sr-only" for="commit-msg">Change description</label>
+<input id="commit-msg" type="text" class="w-msg" placeholder="Describe this change (optional)">
+<button id="btn-save" class="btn-primary-sm" type="button">Save &amp; publish</button>
+</div>
+
+<div class="editor-grid">
+<div class="stage"><iframe id="stage" title="Page being edited" sandbox="allow-same-origin"></iframe></div>
+
+<aside class="inspector" aria-label="Editing tools">
+<div class="panel">
+<h2>Page settings</h2>
+<div class="field"><label for="set-title">Browser tab title</label><input id="set-title" type="text"></div>
+<div class="field"><label for="set-desc">Search description</label><textarea id="set-desc" rows="3"></textarea></div>
+</div>
+<div class="panel">
+<h2>Selection</h2>
+<div id="sel-panel"></div>
+</div>
+</aside>
+</div>
+</div>
+
+<!-- ---------- Files ---------- -->
+<div id="tab-files" class="tabpanel" role="tabpanel" hidden>
+<div class="files-grid">
+<div class="panel files-side">
+<div class="toolbar tight">
+<label class="sr-only" for="file-search">Search files</label>
+<input id="file-search" type="text" placeholder="Search files…">
+</div>
+<ul id="file-list" class="file-list"></ul>
+<div class="files-actions">
+<button id="btn-newpage" class="btn-secondary-sm" type="button">New page…</button>
+</div>
+<div class="upload">
+<h3>Upload files</h3>
+<div class="field"><label for="upload-folder">Folder</label><input id="upload-folder" type="text" list="folder-list" value="assets/"><datalist id="folder-list"></datalist></div>
+<div class="field"><label for="upload-input">Files (max 50&nbsp;MB each)</label><input id="upload-input" type="file" multiple></div>
+<button id="btn-upload" class="btn-primary-sm" type="button">Upload &amp; publish</button>
+</div>
+</div>
+
+<div class="panel files-main">
+<div id="file-empty" class="muted">Select a file to view or edit it. Text files (HTML, CSS, JS, JSON) open in an editor; images preview here.</div>
+<div id="file-view" hidden>
+<div class="toolbar tight">
+<strong id="file-title" class="mono"></strong>
+<span class="grow"></span>
+<span id="file-dirty" class="dirty" hidden>Unsaved changes</span>
+<a id="file-open" class="btn-secondary-sm" href="#" target="_blank" rel="noopener">Open live<span class="sr-only"> (opens in new tab)</span></a>
+<button id="file-revert" class="btn-secondary-sm" type="button">Revert</button>
+<button id="file-delete" class="btn-danger-sm" type="button">Delete</button>
+<button id="file-save" class="btn-primary-sm" type="button">Save &amp; publish</button>
+</div>
+<label class="sr-only" for="file-text">File contents</label>
+<textarea id="file-text" class="code" spellcheck="false" wrap="off"></textarea>
+<div id="file-media" class="media" hidden></div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- ---------- Navigation ---------- -->
+<div id="tab-nav" class="tabpanel" role="tabpanel" hidden>
+<div class="panel nav-panel">
+<h2>Navigation menu</h2>
+<p class="muted">Edits the menu once and applies it to every page in a single commit. Use <code>page.html</code> for a page or <code>index.html#section-id</code> for a section on the home page.</p>
+<ul id="nav-rows" class="nav-rows"></ul>
+<datalist id="page-list"></datalist>
+<div class="toolbar tight">
+<button id="nav-add" class="btn-secondary-sm" type="button">Add link</button>
+<span class="grow"></span>
+<button id="nav-apply" class="btn-primary-sm" type="button">Apply to all pages &amp; publish</button>
+</div>
+</div>
+</div>
+
+<!-- ---------- Help ---------- -->
+<div id="tab-help" class="tabpanel" role="tabpanel" hidden>
+<div class="panel prose-panel">
+<h2>How this works</h2>
+<p>Every save is a normal Git commit to your repository. Your host (Netlify) redeploys the site automatically after each commit, usually within a minute, as long as the Netlify site is linked to this repository. Because changes are commits, they are permanent <em>and</em> reversible: open the repository's commit history to undo anything.</p>
+
+<h3>Editing a page</h3>
+<ul>
+<li><strong>Type over any text</strong> on the page to change it. Pasting is always plain text.</li>
+<li><strong>Click anything</strong> to select it. Use the breadcrumb chips to select a parent, such as a whole project or timeline entry.</li>
+<li><strong>Duplicate</strong> a selected block to add a new project, role, skill or list item, then edit the copy. <strong>Move</strong> and <strong>Delete</strong> work on the selection.</li>
+<li>Change a link's address or replace an image from the Selection panel. Uploaded images are published together with your page.</li>
+<li><strong>Edit HTML</strong> (in the Selection panel) is the escape hatch for anything else.</li>
+<li><kbd>Enter</kbd> is disabled inside text to protect the layout; use <kbd>Shift</kbd>+<kbd>Enter</kbd> for a line break, or Duplicate for a new list item.</li>
+<li>Text edits undo with <kbd>Ctrl/Cmd</kbd>+<kbd>Z</kbd>. Structure changes (duplicate, move, delete) undo with the toolbar button.</li>
+</ul>
+
+<h3>Files &amp; navigation</h3>
+<ul>
+<li><strong>Files</strong> lets you edit any text file (including <code>style.css</code>), upload images or documents, delete files, and create a new page from an existing one.</li>
+<li>After creating a page, add it to the menu under <strong>Navigation</strong>.</li>
+</ul>
+
+<h3>Security</h3>
+<ul>
+<li>This page is public, but it can do nothing without a token that GitHub accepts. Only your token can write to the repository.</li>
+<li>The token stays in this browser only. By default it is cleared when the tab closes, and sessions sign out after 30 idle minutes. "Remember me" keeps it in local storage, where any script running on this site could read it, so prefer leaving it off.</li>
+<li>The token is limited to this one repository and expires, which caps the damage if it ever leaks.</li>
+<li>If a token is lost or exposed, revoke it in GitHub &rarr; Settings &rarr; Developer settings.</li>
+</ul>
+
+<h3>Limits</h3>
+<ul>
+<li>Files over 50&nbsp;MB (such as large videos) can't be uploaded here; add them with Git directly.</li>
+<li>The first time a page is saved, its HTML may be re-indented slightly. The page looks identical.</li>
+<li>Saving replaces the page as you opened it; if the file changed on GitHub in the meantime you'll be asked before overwriting.</li>
+</ul>
+</div>
+</div>
+
+</main>
+</div>
+
+<dialog id="dlg-newpage" class="dlg">
+<form method="dialog" id="newpage-form">
+<h2>New page</h2>
+<div class="field"><label for="np-file">File name</label><input id="np-file" type="text" placeholder="my-new-page.html" required pattern="[a-z0-9\-]+\.html"></div>
+<div class="field"><label for="np-title">Page title</label><input id="np-title" type="text" required></div>
+<div class="field"><label for="np-template">Start from</label><select id="np-template"></select></div>
+<p id="np-error" class="error" hidden></p>
+<div class="dlg-actions">
+<button class="btn-secondary-sm" type="button" id="np-cancel">Cancel</button>
+<button class="btn-primary-sm" type="submit" id="np-create">Create page</button>
+</div>
+</form>
+</dialog>
+
+<div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+<script src="config.js"></script>
+<script src="core.js"></script>
+<script src="admin.js"></script>
+
+</body>
+
+</html>

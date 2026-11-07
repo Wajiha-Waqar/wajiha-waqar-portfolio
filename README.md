@@ -2,7 +2,7 @@
 
 A personal portfolio website showcasing my work in Artificial Intelligence, Machine Learning, Data Engineering, and Research.
 
-**Live site:** [https://wajiha-waqar.github.io/wajiha-waqar-portfolio/](https://wajiha-waqar.github.io/wajiha-waqar-portfolio/)
+**Live site:** [https://wajiha-waqar-portfolio.netlify.app/](https://wajiha-waqar-portfolio.netlify.app/)
 
 ---
 
@@ -24,7 +24,7 @@ The site showcases:
 - HTML5
 - CSS3
 - Vanilla JavaScript
-- Hosted with GitHub Pages
+- Hosted on Netlify
 
 No frameworks or build tools — the site is intentionally simple and dependency-free.
 
@@ -90,11 +90,8 @@ Then visit `http://localhost:8000`.
 
 ## Deployment
 
-The site is deployed with GitHub Pages:
+The site is a static site (no build step) hosted on Netlify. Netlify settings (publish directory, linked repository) live in the Netlify dashboard; this repository has no `netlify.toml`.
 
-1. Push changes to the `main` branch.
-2. In **Settings → Pages**, set the source to **Deploy from branch → `main` → `/root`**.
-3. GitHub Pages will publish the site automatically after each push.
 
 ---
 
@@ -125,9 +122,9 @@ This repository contains personal portfolio content. Code may be reused for refe
 
 ## Admin panel
 
-Edit the site without touching source code at `https://wajiha-waqar.github.io/wajiha-waqar-portfolio/admin/`.
+Edit the site without touching source code at `https://wajiha-waqar-portfolio.netlify.app/admin/`.
 
-**How it works.** GitHub Pages is static hosting, so there is no server and no username/password. The admin panel is a static page that signs in with a GitHub fine-grained access token and saves changes as normal Git commits through the GitHub API. GitHub verifies the token on every write, so the public admin URL is harmless without it. Every change is permanent *and* reversible from the repo's commit history.
+**How it works.** Static hosting has no server, so there is no username/password. The admin panel is a static page that signs in with a GitHub fine-grained access token and saves changes as normal Git commits through the GitHub API. GitHub verifies the token on every write, so the public admin URL is harmless without it. Every change is permanent *and* reversible from the repo's commit history.
 
 **One-time setup**
 1. GitHub → Settings → Developer settings → Personal access tokens → **Fine-grained tokens** → Generate new token.

@@ -78,8 +78,8 @@ I enjoy translating technical and research problems into practical, measurable s
 <aside class="profile" aria-labelledby="profile-h">
 <h2 id="profile-h">Profile</h2>
 <dl class="facts">
-<!-- TODO: add the university name as a new row here once confirmed -->
-<div><dt>Studying</dt><dd>Bachelor's in Information Technology</dd></div>
+<div><dt>University</dt><dd>University of Chakwal</dd></div>
+<div><dt>Degree</dt><dd>Bachelor's in Information Technology</dd></div>
 <div><dt>Expected</dt><dd>Graduation, July 2027</dd></div>
 <div><dt>Focus</dt><dd>AI/ML engineering and applied research</dd></div>
 <div><dt>Research</dt><dd>MCP prompt-injection security <span class="state state--wip">In progress</span></dd></div>
@@ -132,12 +132,12 @@ I enjoy translating technical and research problems into practical, measurable s
 <p class="eyebrow">Featured projects</p>
 <h2 id="proj-h">Featured projects</h2>
 <p class="lede">Three projects, each labelled with its actual status: what is implemented, what is proposed, and what is still being built.</p>
-<p class="legend" aria-label="Status labels used on this site">
+<div class="legend" role="group" aria-label="Status labels used on this site">
 <span><span class="state state--done">Implemented</span></span>
 <span><span class="state state--proposed">Proposed</span></span>
 <span><span class="state state--wip">In progress</span></span>
 <span><span class="state state--planned">Planned</span></span>
-</p>
+</div>
 </header>
 <article class="feature reveal" id="feature-workflow">
 <div class="feature-main">
@@ -194,15 +194,15 @@ I enjoy translating technical and research problems into practical, measurable s
 <figure class="diagram">
 <figcaption><span class="fig-title">Proposed experimental design (conceptual)</span></figcaption>
 <ol>
-<li>Session 1<small>attacker-controlled content reaches persistent application state</small></li>
-<li class="is-boundary">Session boundary<small>the persistent state survives</small></li>
-<li>Session 2<small>persisted content is available to the agent</small></li>
-<li class="is-proposed">Proposed defense<small>provenance and trust policies, checked before sensitive tool execution</small></li>
-<li>MCP tool call<small>measured outcome: unintended action likelihood</small></li>
+<li>Session 1<small>attacker-controlled content is written to application state</small></li>
+<li class="is-boundary">Session reset<small>P0: the state is unavailable &middot; P1: the same state remains retrievable</small></li>
+<li>Session 2<small>the agent operates after the reset</small></li>
+<li class="is-proposed">Proposed defense<small>deterministic provenance and trust policies, checked before sensitive MCP execution</small></li>
+<li>MCP tool call<small>measured outcome: unintended action or not</small></li>
 </ol>
-<p class="note">Conceptual illustration of the study design, not a description of a finished implementation.</p>
+<p class="note">Conceptual illustration of the proposed design, not a description of a finished implementation.</p>
 </figure><ul class="matrix stack-top">
-<li><span class="state state--proposed">Proposed</span>Experimental design: cross-session persistent state</li>
+<li><span class="state state--proposed">Proposed</span>Experimental design: matched P0 / P1 conditions</li>
 <li><span class="state state--proposed">Proposed</span>Defense: deterministic provenance and trust policies</li>
 <li><span class="state state--wip">In progress</span>Research under way; no results are reported yet</li>
 </ul>
@@ -220,17 +220,17 @@ I enjoy translating technical and research problems into practical, measurable s
 </header>
 <div class="areas">
 <div class="area reveal">
-<span class="area-k">A</span>
+<span class="area-k">A &middot; Current focus</span>
 <h3>AI &amp; Intelligent Systems</h3>
 <ul><li>Artificial Intelligence</li><li>Machine Learning</li><li>LLM Applications</li><li>AI Agents</li><li>Trustworthy AI</li><li>AI Security</li></ul>
 </div>
 <div class="area reveal">
-<span class="area-k">B</span>
+<span class="area-k">B &middot; Developing interest</span>
 <h3>Mathematical &amp; Decision Sciences</h3>
 <ul><li>Applied Mathematics</li><li>Probability and Statistics</li><li>Optimization</li><li>Operations Research</li><li>Decision Science</li></ul>
 </div>
 <div class="area reveal">
-<span class="area-k">C</span>
+<span class="area-k">C &middot; Developing interest</span>
 <h3>Quantitative Research</h3>
 <ul><li>Quantitative Finance</li><li>Financial Engineering</li><li>Mathematical Modeling</li><li>Computational Finance</li></ul>
 </div>
@@ -311,51 +311,49 @@ I enjoy translating technical and research problems into practical, measurable s
 <p class="edu-when">Expected graduation<br>July 2027</p>
 <div class="edu-body">
 <h3>Bachelor's in Information Technology</h3>
-<!-- TODO: add the university name here once confirmed -->
+<p class="edu-school">University of Chakwal</p>
 <p>Developing practical skills in machine learning, data engineering and AI research.</p>
-<div>
-<h4>Long-term academic direction</h4>
-<ol class="goal-path">
-<li><span class="state state--planned">Goal</span> Master's in Artificial Intelligence</li>
-<li><span class="state state--planned">Goal</span> PhD in Operations Research</li>
-<li><span class="state state--planned">Goal</span> Quantitative research</li>
-</ol>
-</div>
+<p class="muted">Looking ahead: graduate study in AI, with operations research and quantitative methods as developing interests.</p>
 </div>
 </div>
 </section>
 
 <section id="publications" aria-labelledby="pub-h">
 <header class="section-head">
-<p class="eyebrow">Research &amp; publications</p>
-<h2 id="pub-h">Research &amp; publications</h2>
+<p class="eyebrow">Research &amp; technical writing</p>
+<h2 id="pub-h">Research &amp; technical writing</h2>
 </header>
-<ul class="work-list">
 
+<h3 class="group-label">Ongoing research</h3>
+<ul class="work-list">
 <li class="work-row work-row--stack reveal">
 <div class="work-row-head">
-<h3>Evaluating Cross-Session Prompt Injection in MCP-Based AI Agents: Persistence, Security Defenses, and Tool-Use Outcomes</h3>
+<h4 class="row-title">Evaluating Cross-Session Prompt Injection in MCP-Based AI Agents: Persistence, Security Defenses, and Tool-Use Outcomes</h4>
 <div class="state-row"><span class="state state--wip">Research in progress</span></div>
 </div>
 <div class="work-row-body">
-<p>Ongoing undergraduate final-year research. No results or publications to report yet.</p>
+<p>Ongoing undergraduate final-year research. It is not a publication, and no results are reported yet.</p>
 <a class="text-link" href="fyp-research.html">Read research overview</a>
 </div>
 </li>
+</ul>
 
+<h3 class="group-label">Technical reports and self-published work</h3>
+<ul class="work-list">
 <li class="work-row work-row--stack reveal">
 <div class="work-row-head">
-<h3>Leakage-Aware Content Refresh Opportunity Scoring: FlyRank Capstone</h3>
-<div class="state-row"><span class="state state--note">Self-published write-up</span></div>
+<h4 class="row-title">Leakage-Aware Content Refresh Opportunity Scoring: FlyRank Capstone</h4>
+<div class="state-row"><span class="state state--note">Self-published</span><span class="state state--note">Not peer-reviewed</span></div>
 </div>
 <div class="work-row-body">
-<p>Technical paper accompanying the capstone notebook, published on GitHub Pages. It has not been peer-reviewed.</p>
+<p>Technical paper accompanying the capstone notebook. It is self-published on GitHub Pages and has not been peer-reviewed.</p>
 <p class="case-links"><a class="text-link" href="https://wajiha-waqar.github.io/FlyRankInternship/" target="_blank" rel="noopener">Read the paper<span class="sr-only"> (opens in new tab)</span></a><a class="text-link" href="https://github.com/Wajiha-Waqar/FlyRankInternship/blob/main/work/notebooks/capstone.ipynb" target="_blank" rel="noopener">Notebook<span class="sr-only"> (opens in new tab)</span></a></p>
 </div>
 </li>
-
 </ul>
-<p class="muted stack-top">Peer-reviewed publications will be listed here when available.</p>
+
+<h3 class="group-label">Peer-reviewed publications</h3>
+<p class="muted">None listed yet. Peer-reviewed publications will appear here when available.</p>
 </section>
 
 <section class="contact-preview" id="contact" aria-labelledby="contact-h">
@@ -372,7 +370,7 @@ I enjoy translating technical and research problems into practical, measurable s
 <footer class="site-footer">
 <div class="footer-inner">
 <p>&copy; 2026 Wajiha Waqar</p>
-<p>Built with HTML, CSS and GitHub Pages.</p>
+<p>Built with HTML, CSS and JavaScript. Hosted on Netlify.</p>
 </div>
 </footer>
 
