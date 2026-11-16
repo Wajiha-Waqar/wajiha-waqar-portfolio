@@ -1,0 +1,67 @@
+/* Admin surfaces outside Decap itself: the deploy pill and the dashboard. Uses the site's tokens. */
+/* variables are scoped to my own elements so they can never collide with Decap's interface */
+#admin-dock,body.dash{--bg:#F9FAFB;--surface:#fff;--ink:#111827;--ink-2:#374151;--muted:#4B5563;--rule:#DDE2E9;--accent:#1E3A8A;--accent-soft:#EEF2FA;--ok:#047857;--ok-soft:#ECFDF5;--wip:#92400E;--wip-soft:#FEF3C7;--bad:#B91C1C;--bad-soft:#FEF2F2;--ease:cubic-bezier(.2,.6,.2,1)}
+
+#admin-dock{position:fixed;left:16px;bottom:16px;z-index:9999;display:flex;flex-wrap:wrap;align-items:center;gap:8px;max-width:calc(100vw - 32px)}
+#admin-dock[hidden]{display:none}
+.dock-link{display:inline-flex;align-items:center;min-height:36px;padding:0 14px;background:var(--surface);color:var(--accent);border:1px solid var(--rule);border-radius:999px;box-shadow:0 2px 10px rgba(15,27,61,.10);font:600 13px/1 Inter,system-ui,sans-serif;text-decoration:none;transition:background .15s var(--ease),transform .15s var(--ease)}
+.dock-link:hover{background:var(--accent-soft)}.dock-link:active{transform:scale(.97)}.dock-link:focus-visible{outline:2px solid #2563EB;outline-offset:2px}
+#deploy-pill{display:flex;align-items:center;gap:10px;max-width:min(26rem,calc(100vw - 32px));padding:8px 14px;background:var(--surface);color:var(--ink);border:1px solid var(--rule);border-radius:999px;box-shadow:0 2px 10px rgba(15,27,61,.10);font:500 13px/1.3 Inter,system-ui,sans-serif;transition:border-color .2s var(--ease),background .2s var(--ease)}
+#deploy-pill[hidden]{display:none}
+#deploy-pill .dot{flex:none;width:9px;height:9px;border-radius:50%;background:#9CA3AF}
+#deploy-pill[data-state="live"] .dot{background:var(--ok)}
+#deploy-pill[data-state="deploying"] .dot{background:#D97706;animation:pulse 1.2s ease-in-out infinite}
+#deploy-pill[data-state="failed"]{border-color:var(--bad);background:var(--bad-soft)}
+#deploy-pill[data-state="failed"] .dot{background:var(--bad)}
+#deploy-pill[data-state="stale"] .dot{background:#D97706}
+#deploy-pill .more{color:var(--accent);font-weight:600;white-space:nowrap}
+@keyframes pulse{50%{opacity:.35;transform:scale(.8)}}
+@media (prefers-reduced-motion:reduce){#deploy-pill[data-state="deploying"] .dot{animation:none}#deploy-pill,.dock-link{transition:none}}
+
+/* ---- dashboard page ---- */
+body.dash{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.dash a{color:var(--accent)}
+.dash :focus-visible{outline:2px solid #2563EB;outline-offset:3px;border-radius:3px}
+.dash-wrap{max-width:68rem;margin:0 auto;padding:32px clamp(16px,4vw,40px) 64px}
+.dash-top{display:flex;flex-wrap:wrap;gap:12px 24px;align-items:center;justify-content:space-between;margin-bottom:28px}
+.dash h1{margin:0;font-family:'Source Serif 4',Georgia,serif;font-weight:500;font-size:clamp(1.5rem,3vw,2rem);line-height:1.2;letter-spacing:-.01em}
+.dash h2{margin:0 0 12px;font-family:Inter,system-ui,sans-serif;font-weight:600;font-size:1.125rem;line-height:1.3}
+.dash .btn{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;background:var(--accent);color:#fff;border:1px solid var(--accent);border-radius:4px;font-weight:600;text-decoration:none;transition:background .15s var(--ease),transform .15s var(--ease)}
+.dash .btn:hover{background:#172E6E}.dash .btn:active{transform:scale(.98)}
+.dash .btn.ghost{background:transparent;color:var(--accent)}.dash .btn.ghost:hover{background:var(--accent-soft)}
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(18rem,1fr))}
+.card{background:var(--surface);border:1px solid var(--rule);border-radius:6px;padding:20px}
+.card.wide{grid-column:1/-1}
+.badge{display:inline-flex;align-items:center;gap:8px;padding:4px 10px;border-radius:999px;font:600 13px/1.3 Inter,system-ui,sans-serif;background:#EEF0F3;color:var(--ink-2)}
+.badge[data-state="live"],.badge[data-state="ok"]{background:var(--ok-soft);color:var(--ok)}
+.badge[data-state="deploying"],.badge[data-state="draft"],.badge[data-state="stale"]{background:var(--wip-soft);color:var(--wip)}
+.badge[data-state="failed"],.badge[data-state="bad"]{background:var(--bad-soft);color:var(--bad)}
+.badge[data-state="review"]{background:var(--accent-soft);color:var(--accent)}
+.badge[data-state="ready"]{background:var(--ok-soft);color:var(--ok)}
+.muted{color:var(--muted);font-size:.9375rem}
+.stat-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,1fr);gap:8px 16px}
+.stat-list li{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px solid var(--rule)}
+.stat-list b{font-variant-numeric:tabular-nums}
+.rows{list-style:none;margin:0;padding:0}
+.rows li{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;justify-content:space-between;padding:12px 0;border-top:1px solid var(--rule)}
+.rows li:first-child{border-top:0}
+.rows .t{font-weight:500}
+.skel{display:block;height:1em;border-radius:4px;background:linear-gradient(90deg,#EEF0F3 25%,#F6F7F9 50%,#EEF0F3 75%);background-size:200% 100%;animation:sk 1.4s linear infinite}
+@keyframes sk{to{background-position:-200% 0}}
+@media (prefers-reduced-motion:reduce){.skel{animation:none}.dash .btn{transition:none}}
+.callout{padding:14px 16px;border:1px solid var(--rule);border-radius:6px;background:var(--surface)}
+.callout.bad{border-color:#FCA5A5;background:var(--bad-soft)}
+ol.steps{margin:0;padding-left:1.25rem}ol.steps li{margin:4px 0}
+
+/* ---- standalone CMS dashboard ---- */
+body.cms-dashboard{margin:0;background:#F9FAFB;color:#111827;font:16px/1.6 Inter,system-ui,sans-serif}
+.dashboard-wrap{max-width:68rem;margin:0 auto;padding:32px clamp(16px,4vw,40px) 64px}
+.dashboard-header{margin-bottom:24px}
+.dashboard-header h1{margin:.5rem 0;font:500 clamp(1.6rem,3vw,2.2rem)/1.2 'Source Serif 4',Georgia,serif}
+.dashboard-header p{color:#4B5563}
+.dashboard-card{margin:16px 0;padding:20px;background:#fff;border:1px solid #DDE2E9;border-radius:6px}
+.dashboard-card h2{margin:0 0 12px;font:600 1.125rem/1.3 Inter,system-ui,sans-serif}
+.dashboard-card a{color:#1E3A8A}
+.dashboard-counts{display:grid;grid-template-columns:repeat(auto-fit,minmax(9rem,1fr));gap:8px;list-style:none;padding:0}
+.dashboard-counts li{display:flex;justify-content:space-between;padding:8px 10px;background:#EEF2FA;border-radius:4px}
+.dashboard-wrap [aria-busy="true"]{opacity:.7}

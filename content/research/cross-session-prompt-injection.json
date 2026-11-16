@@ -1,0 +1,24 @@
+{
+  "title": "Evaluating Cross-Session Prompt Injection in MCP-Based AI Agents: Persistence, Security Defenses, and Tool-Use Outcomes",
+  "type": "ongoing",
+  "status": "published",
+  "order": 10,
+  "research_status": "in_progress",
+  "short_description": "Ongoing undergraduate final-year research. It is not a publication, and no results are reported yet.",
+  "status_chips": [{ "style": "wip", "label": "Research in progress" }],
+  "detail_page": "fyp-research.html",
+  "detail_label": "Read research overview",
+  "problem": "Does attacker-controlled persistent state that survives a session boundary change the likelihood of unintended MCP-mediated actions?",
+  "objectives": [
+    "Evaluate whether cross-session persistence of attacker-controlled state changes the likelihood of unintended MCP-mediated actions.",
+    "Evaluate a proposed defense that uses deterministic provenance and trust policies to identify untrusted persistent content before sensitive MCP execution.",
+    "Examine tool-use outcomes under the conditions tested."
+  ],
+  "methodology": "The proposed study compares matched P0 and P1 conditions that differ in whether attacker-controlled application state remains retrievable after a session reset. No results are reported.",
+  "technologies": ["LLM security", "Prompt injection", "AI agent security", "Model Context Protocol (MCP)"],
+  "related_documents": [],
+  "github_url": "",
+  "github_label": "",
+  "publication_url": "",
+  "publication_label": ""
+}

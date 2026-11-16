@@ -1,0 +1,23 @@
+{
+  "title": "Disaster Alert System",
+  "status": "published",
+  "order": 60,
+  "featured": false,
+  "placeholder": false,
+  "completion": "planned",
+  "short_description": "Personal project focused on AI-powered multi-hazard disaster monitoring and decision support.",
+  "categories": ["AI / ML", "Systems"],
+  "status_chips": [{ "style": "planned", "label": "Planned" }],
+  "technologies": [],
+  "case_study_url": "",
+  "extra_links": [],
+  "thumbnail_alt": "",
+  "screenshots": [],
+  "facts": [],
+  "anchor": "",
+  "case_chips": [],
+  "categories_aria": "",
+  "side_heading": "Technology",
+  "home_visuals": [],
+  "case_visuals": []
+}

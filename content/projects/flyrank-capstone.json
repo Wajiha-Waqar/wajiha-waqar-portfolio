@@ -1,0 +1,59 @@
+{
+  "title": "Leakage-Aware Content Refresh Opportunity Scoring",
+  "status": "published",
+  "order": 20,
+  "featured": true,
+  "placeholder": false,
+  "completion": "completed",
+  "short_description": "A predictive ranking and triage system that helps reviewers decide which content pages to inspect first. It uses 26 engineered features, temporal development windows, a held-out future month and leakage audits, comparing Logistic Regression with Random Forest under client-grouped validation. It improves ranking performance over a fixed baseline; it makes no causal claim about refreshing content.",
+  "detailed_description": "A leakage-aware time-split ranking model for prioritizing content-refresh review, evaluated on a held-out future month.",
+  "categories": ["Research", "AI / ML", "Data"],
+  "status_chips": [{ "style": "done", "label": "Completed" }],
+  "technologies": ["Python", "Pandas", "NumPy", "Scikit-learn", "Random Forest", "Jupyter Notebook"],
+  "case_study_url": "capstone.html",
+  "case_study_label": "Read case study",
+  "github_url": "https://github.com/Wajiha-Waqar/FlyRankInternship/blob/main/work/notebooks/capstone.ipynb",
+  "github_label": "Notebook",
+  "live_demo_url": "",
+  "extra_links": [{ "label": "Paper", "url": "https://wajiha-waqar.github.io/FlyRankInternship/" }],
+  "thumbnail_alt": "",
+  "screenshots": [],
+  "facts": [
+    { "label": "Problem", "text": "Content teams have more pages worth investigating than they can review at once. The research question was whether March-only, non-label-derived search and engagement signals can rank content that later meets a predefined refresh-review condition in April." },
+    { "label": "Approach", "text": "A predictive ranking and triage system to support human review, not automated publishing. Development panels used January→February and February→March, with a held-out future test window of March→April." },
+    { "label": "Methods", "text": "26 engineered features from search position, GA4 engagement and traffic-channel signals; leakage audits; Logistic Regression and Random Forest compared with client-grouped validation using Average Precision; a tiered review queue with reason codes." },
+    { "label": "Outcome", "text": "Random Forest outperformed a fixed Week-4 baseline on the held-out month (Precision@20 0.65 against 0.40; Average Precision 0.4838 against 0.3807). This shows improved ranking performance, not a causal effect of refreshing content." }
+  ],
+  "anchor": "feature-ranking",
+  "case_chips": [],
+  "categories_aria": "Project categories",
+  "side_heading": "Technology",
+  "home_visuals": [
+    {
+      "type": "chart",
+      "title": "Held-out evaluation, March→April",
+      "key_a": "Week-4 baseline",
+      "key_b": "Random Forest",
+      "base_rate": 0.2374,
+      "note": "Dashed line: the 23.74% positive-class base rate, the level a random ranking would reach. Higher is better.",
+      "rows": [
+        { "label": "Precision@20", "a": 0.4, "b": 0.65, "decimals": 2 },
+        { "label": "Precision@50", "a": 0.52, "b": 0.7, "decimals": 2 },
+        { "label": "Precision@100", "a": 0.54, "b": 0.76, "decimals": 2 },
+        { "label": "Avg. Precision", "a": 0.3807, "b": 0.4838, "decimals": 4 }
+      ]
+    }
+  ],
+  "case_visuals": [
+    {
+      "type": "diagram",
+      "title": "Evaluation design",
+      "items": [
+        { "title": "Development panels", "detail": "Jan→Feb, Feb→Mar", "kind": "normal" },
+        { "title": "Leakage audit", "detail": "no future or outcome-derived fields", "kind": "normal" },
+        { "title": "Model selection", "detail": "client-grouped validation, Average Precision", "kind": "normal" },
+        { "title": "Held-out test", "detail": "Mar→Apr, vs. fixed baseline", "kind": "normal" }
+      ]
+    }
+  ]
+}

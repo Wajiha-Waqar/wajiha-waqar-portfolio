@@ -1,0 +1,23 @@
+{
+  "title": "Independent Project",
+  "status": "published",
+  "order": 80,
+  "featured": false,
+  "placeholder": true,
+  "completion": "planned",
+  "short_description": "Reserved for an upcoming independent project outside coursework, exploring a new idea in AI or decision-support systems.",
+  "categories": [],
+  "status_chips": [{ "style": "planned", "label": "Planned" }],
+  "technologies": [],
+  "case_study_url": "",
+  "extra_links": [],
+  "thumbnail_alt": "",
+  "screenshots": [],
+  "facts": [],
+  "anchor": "",
+  "case_chips": [],
+  "categories_aria": "",
+  "side_heading": "Technology",
+  "home_visuals": [],
+  "case_visuals": []
+}

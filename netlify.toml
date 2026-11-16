@@ -1,0 +1,49 @@
+# Netlify configuration for wajiha-waqar-portfolio
+# The site is generated from content/*.json by build.js. Netlify runs the build on every commit to main
+# (production), and on every pull request (Deploy Preview). Decap CMS drafts are pull requests, so each
+# draft gets its own preview URL.
+
+[build]
+  command   = "npm run build"
+  publish   = "dist"
+  functions = "netlify/functions"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# CONTEXT is set by Netlify: "production" | "deploy-preview" | "branch-deploy".
+# build.js renders draft content ONLY when CONTEXT is not "production", so drafts can never reach the live site.
+
+# Preserve the old, previously linked URL while pointing it at the image's existing location.
+[[redirects]]
+  from   = "/assets/Edex_internship_cert.jpg"
+  to     = "/images/Edex_internship_cert.jpg"
+  status = 301
+
+# ---- headers --------------------------------------------------------------------------------------
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy        = "strict-origin-when-cross-origin"
+    Permissions-Policy     = "camera=(), microphone=(), geolocation=()"
+
+# The admin area must never be cached, framed, or indexed.
+# (X-Frame-Options is set only here: repeating it on /* would send two conflicting values for /admin/*.)
+[[headers]]
+  for = "/admin/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    Cache-Control   = "no-store"
+    X-Robots-Tag    = "noindex, nofollow"
+
+# Certificate files are public only when published, but should not be indexed by search engines.
+[[headers]]
+  for = "/assets/certificates/*"
+  [headers.values]
+    X-Robots-Tag = "noindex"
+
+[[headers]]
+  for = "/build-info.json"
+  [headers.values]
+    Cache-Control = "no-store"

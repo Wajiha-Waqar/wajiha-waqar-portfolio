@@ -85,6 +85,7 @@ code{font-family:var(--font-mono);font-size:.875em;background:var(--accent-soft)
   transition:top var(--dur-fast) var(--ease);
 }
 .skip-link:focus{top:var(--sp-3);color:#fff}
+.preview-banner{max-width:none;margin:0;padding:.6rem 1rem;background:#FEF3C7;color:#78350F;text-align:center;font-size:.875rem}
 
 /* ---------- 3. Typography ---------- */
 h1,h2,h3{

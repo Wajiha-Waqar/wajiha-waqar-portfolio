@@ -1,0 +1,460 @@
+# Decap CMS configuration for wajiha-waqar-portfolio
+# Docs: https://decapcms.org/docs/configuration-options/
+#
+# Auth: GitHub backend + a self-hosted OAuth proxy (Netlify Functions in netlify/functions).
+#   - No Netlify Identity / Git Gateway.
+#   - The proxy only lets the GitHub account in ALLOWED_GITHUB_USER sign in.
+#   - Netlify env vars: GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET, ALLOWED_GITHUB_USER, GITHUB_REPO, OAUTH_SCOPE, SITE_URL (see docs/CMS.md).
+# Publishing: editorial workflow. Every edit becomes a draft on a "cms/..." branch + pull request.
+#   Draft -> In review -> Ready -> Publish (merges to main, Netlify deploys the live site).
+#   Netlify builds a Deploy Preview of each draft, which is the "Preview" step.
+
+backend:
+  name: github
+  repo: Wajiha-Waqar/wajiha-waqar-portfolio
+  branch: main
+  base_url: https://wajiha-waqar-portfolio.netlify.app
+  auth_endpoint: .netlify/functions/auth
+  auth_scope: repo            # must match OAUTH_SCOPE in Netlify (use public_repo for a public repo)
+  squash_merges: true         # one commit per publish, so reverting is a single click
+  commit_messages:
+    create: 'Add {{collection}} "{{slug}}" via CMS'
+    update: 'Update {{collection}} "{{slug}}" via CMS'
+    delete: 'Delete {{collection}} "{{slug}}" via CMS'
+    uploadMedia: 'Upload "{{path}}" via CMS'
+    deleteMedia: 'Delete "{{path}}" via CMS'
+    openAuthoring: '{{message}}'
+
+publish_mode: editorial_workflow
+site_url: https://wajiha-waqar-portfolio.netlify.app
+display_url: https://wajiha-waqar-portfolio.netlify.app
+show_preview_links: true
+locale: en
+search: true
+media_folder: images/uploads
+public_folder: /images/uploads
+slug:
+  encoding: ascii
+  clean_accents: true
+  sanitize_replacement: '-'
+
+# ---------------------------------------------------------------------------------------------
+# Reusable field groups (YAML anchors)
+# ---------------------------------------------------------------------------------------------
+_status_style: &status_style
+  label: Style
+  name: style
+  widget: select
+  options:
+    - { label: 'Green: implemented / completed', value: done }
+    - { label: 'Blue: proposed', value: proposed }
+    - { label: 'Amber: in progress', value: wip }
+    - { label: 'Dashed: planned', value: planned }
+    - { label: 'Grey: note', value: note }
+
+_chips: &chips
+  label: Status labels
+  name: status_chips
+  widget: list
+  required: false
+  summary: '{{fields.label}}'
+  hint: Small coloured labels shown on cards. Be accurate, and never mark planned work as implemented.
+  fields:
+    - *status_style
+    - { label: Text, name: label, widget: string }
+
+_visibility: &visibility
+  label: Visibility
+  name: status
+  widget: select
+  default: published
+  options:
+    - { label: 'Published: shown on the live site', value: published }
+    - { label: 'Draft: only shown in previews', value: draft }
+    - { label: 'Hidden: never shown', value: hidden }
+  hint: Separate from the publishing workflow. Hidden and Draft records stay out of the live site even after the change is published.
+
+_order: &order
+  label: Display order
+  name: order
+  widget: number
+  value_type: int
+  min: 0
+  default: 10
+  hint: Lower numbers appear first.
+
+_string_list: &string_list
+  widget: list
+  required: false
+  field: { label: Item, name: item, widget: string }
+
+collections:
+  # =========================================================================================== 1. PROJECTS
+  - name: projects
+    label: Projects
+    label_singular: Project
+    folder: content/projects
+    extension: json
+    format: json
+    create: true
+    delete: true
+    slug: '{{slug}}'
+    identifier_field: title
+    summary: '{{title}} ({{status}})'
+    media_folder: /images/projects
+    public_folder: /images/projects
+    sortable_fields: ['order', 'title', 'status']
+    view_filters:
+      - { label: Published, field: status, pattern: published }
+      - { label: Drafts, field: status, pattern: draft }
+      - { label: Hidden, field: status, pattern: hidden }
+      - { label: Featured, field: featured, pattern: true }
+    view_groups:
+      - { label: Visibility, field: status }
+      - { label: Completion, field: completion }
+    fields:
+      - { label: Project name, name: title, widget: string }
+      - *visibility
+      - *order
+      - { label: Featured, name: featured, widget: boolean, default: false, hint: 'Featured projects get a full case-study block on the home and Projects pages.' }
+      - { label: Reserved slot, name: placeholder, widget: boolean, default: false, required: false, hint: 'On = listed under "Planned work" as a reserved slot.' }
+      - { label: Completion status, name: completion, widget: select, default: in_progress, options: [{ label: Completed, value: completed }, { label: MVP tested, value: mvp }, { label: In progress, value: in_progress }, { label: Planned, value: planned }] }
+      - { label: Short description, name: short_description, widget: text, hint: Shown on cards. One to three sentences. }
+      - { label: Detailed description, name: detailed_description, widget: markdown, required: false, hint: 'Used on a generated detail page, only when there is no Case study URL below.' }
+      - { label: Categories, name: categories, widget: select, multiple: true, required: false, options: ['Research', 'AI / ML', 'AI security', 'Data', 'Engineering', 'NLP', 'Systems'] }
+      - <<: *chips
+      - { label: Technologies and tools, name: technologies, <<: *string_list }
+      - { label: Case study URL, name: case_study_url, widget: string, required: false, hint: 'An existing page such as capstone.html, or leave empty to generate a detail page from the fields here.' }
+      - { label: Case study link text, name: case_study_label, widget: string, required: false, hint: 'Default: Read case study' }
+      - { label: GitHub repository URL, name: github_url, widget: string, required: false }
+      - { label: GitHub link text, name: github_label, widget: string, required: false, hint: 'Default: GitHub' }
+      - { label: Live demo URL, name: live_demo_url, widget: string, required: false }
+      - { label: Extra links, name: extra_links, widget: list, required: false, summary: '{{fields.label}}', fields: [{ label: Link text, name: label, widget: string }, { label: URL, name: url, widget: string }] }
+      - { label: Thumbnail, name: thumbnail, widget: image, required: false, choose_url: false }
+      - { label: Thumbnail description (alt text), name: thumbnail_alt, widget: string, required: false, hint: Required when there is a thumbnail. }
+      - label: Screenshots
+        name: screenshots
+        widget: list
+        required: false
+        summary: '{{fields.alt}}'
+        fields:
+          - { label: Image, name: image, widget: image, choose_url: false }
+          - { label: Description (alt text), name: alt, widget: string }
+          - { label: Caption, name: caption, widget: string, required: false }
+      - label: Case-study facts
+        name: facts
+        widget: list
+        required: false
+        summary: '{{fields.label}}'
+        hint: 'Labelled rows such as Problem, Approach, Methods, Outcome.'
+        fields: [{ label: Label, name: label, widget: string }, { label: Text, name: text, widget: text }]
+      - { label: Home page anchor, name: anchor, widget: string, required: false, hint: 'Keeps existing #links working. Leave empty for new projects.' }
+      - { label: Home-card status labels override, name: case_chips, widget: list, required: false, summary: '{{fields.label}}', hint: 'Optional different labels for the Projects page.', fields: [*status_style, { label: Text, name: label, widget: string }] }
+      - { label: Categories accessibility label, name: categories_aria, widget: string, required: false }
+      - { label: Technology heading, name: side_heading, widget: string, required: false, hint: 'Default: Technology' }
+      - label: Home page visuals
+        name: home_visuals
+        widget: list
+        required: false
+        collapsed: true
+        typeKey: type
+        types: &visual_types
+          - label: Status matrix
+            name: matrix
+            widget: object
+            fields:
+              - label: Rows
+                name: rows
+                widget: list
+                summary: '{{fields.label}}: {{fields.text}}'
+                fields: [*status_style, { label: Label, name: label, widget: string }, { label: Text, name: text, widget: string }]
+          - label: Diagram
+            name: diagram
+            widget: object
+            fields:
+              - { label: Title, name: title, widget: string }
+              - label: Steps
+                name: items
+                widget: list
+                summary: '{{fields.title}}'
+                fields:
+                  - { label: Step, name: title, widget: string }
+                  - { label: Detail, name: detail, widget: string, required: false }
+                  - { label: Kind, name: kind, widget: select, default: normal, options: [{ label: Normal, value: normal }, { label: Boundary, value: boundary }, { label: Proposed, value: proposed }] }
+              - { label: Note, name: note, widget: string, required: false }
+          - label: Results chart
+            name: chart
+            widget: object
+            fields:
+              - { label: Title, name: title, widget: string }
+              - { label: First series name, name: key_a, widget: string }
+              - { label: Second series name, name: key_b, widget: string }
+              - { label: Reference (base) rate, name: base_rate, widget: number, value_type: float, required: false }
+              - { label: Note, name: note, widget: string, required: false }
+              - label: Rows
+                name: rows
+                widget: list
+                summary: '{{fields.label}}'
+                fields:
+                  - { label: Metric, name: label, widget: string }
+                  - { label: First series value, name: a, widget: number, value_type: float }
+                  - { label: Second series value, name: b, widget: number, value_type: float }
+                  - { label: Decimals shown, name: decimals, widget: number, value_type: int, min: 0, default: 2 }
+      - { label: Projects page visuals, name: case_visuals, widget: list, required: false, collapsed: true, typeKey: type, types: *visual_types }
+
+  # =========================================================================================== 2. SKILLS
+  - name: skills
+    label: Skills
+    delete: false
+    files:
+      - name: skills
+        label: Skills and categories
+        file: content/skills.json
+        format: json
+        fields:
+          - { label: Section label, name: eyebrow, widget: string }
+          - { label: Section title, name: title, widget: string }
+          - { label: Intro sentence, name: lede, widget: string, required: false }
+          - label: Categories
+            name: categories
+            widget: list
+            summary: '{{fields.name}}'
+            hint: Drag to reorder categories or skills. Untick Visible to hide one without deleting it.
+            fields:
+              - { label: Category name, name: name, widget: string }
+              - { label: Visible, name: visible, widget: boolean, default: true }
+              - label: Skills
+                name: skills
+                widget: list
+                summary: '{{fields.name}}'
+                fields: [{ label: Skill, name: name, widget: string }, { label: Visible, name: visible, widget: boolean, default: true }]
+
+  # =========================================================================================== 3. EXPERIENCE
+  - name: experience
+    label: Experience
+    label_singular: Experience
+    folder: content/experience
+    extension: json
+    format: json
+    create: true
+    delete: true
+    slug: '{{slug}}'
+    identifier_field: organization
+    summary: '{{organization}}: {{title}} ({{status}})'
+    media_folder: /images/organizations
+    public_folder: /images/organizations
+    sortable_fields: ['order', 'organization', 'status']
+    view_filters:
+      - { label: Published, field: status, pattern: published }
+      - { label: Hidden or draft, field: status, pattern: '^(hidden|draft)$' }
+    fields:
+      - { label: Organization, name: organization, widget: string }
+      - { label: Job title, name: title, widget: string }
+      - *visibility
+      - *order
+      - { label: Employment type, name: employment_type, widget: select, required: false, options: ['Internship', 'Full-time', 'Part-time', 'Contract', 'Freelance', 'Volunteer', 'Research'] }
+      - { label: Dates label, name: meta_label, widget: string, required: false, hint: 'Shown under the organization, e.g. "3 months · Completed April 2026". If empty it is built from the dates below.' }
+      - { label: Start date, name: start_date, widget: datetime, date_format: 'YYYY-MM', time_format: false, format: 'YYYY-MM', required: false }
+      - { label: End date, name: end_date, widget: datetime, date_format: 'YYYY-MM', time_format: false, format: 'YYYY-MM', required: false }
+      - { label: Current position, name: current, widget: boolean, default: false }
+      - { label: Prominent card, name: major, widget: boolean, default: false, hint: 'On = the large card with responsibilities, technologies and outcome.' }
+      - { label: Description, name: description, widget: text, required: false }
+      - { label: Responsibilities heading, name: responsibilities_heading, widget: string, required: false }
+      - { label: Responsibilities, name: responsibilities, <<: *string_list }
+      - { label: Skills and technologies, name: skills, <<: *string_list }
+      - { label: Skills sentence, name: skills_note, widget: string, required: false, hint: 'For compact cards, shown as "Skills: ...".' }
+      - { label: Achievements and outcome, name: achievements, widget: text, required: false }
+      - { label: Organization logo, name: logo, widget: image, required: false, choose_url: false }
+      - { label: Related certificate, name: certificate, widget: relation, collection: certificates, search_fields: ['title'], value_field: '{{slug}}', display_fields: ['title'], required: false, hint: 'The View certificate button appears once that certificate is published with a file.' }
+      - { label: Links, name: links, widget: list, required: false, summary: '{{fields.label}}', fields: [{ label: Link text, name: label, widget: string }, { label: URL, name: url, widget: string }] }
+
+  # =========================================================================================== 4. CERTIFICATES
+  - name: certificates
+    label: Certificates
+    label_singular: Certificate
+    folder: content/certificates
+    extension: json
+    format: json
+    create: true
+    delete: true
+    slug: '{{slug}}'
+    identifier_field: title
+    summary: '{{title}} ({{status}})'
+    media_folder: /assets/certificates
+    public_folder: /assets/certificates
+    sortable_fields: ['title', 'issue_date', 'status']
+    view_filters:
+      - { label: Published, field: status, pattern: published }
+      - { label: Not published, field: status, pattern: '^(draft|hidden)$' }
+    fields:
+      - { label: Certificate title, name: title, widget: string }
+      - { label: Issuing organization, name: issuer, widget: string }
+      - { label: Issue date, name: issue_date, widget: datetime, date_format: 'YYYY-MM-DD', time_format: false, format: 'YYYY-MM-DD', required: false }
+      - { label: Short description, name: description, widget: text, required: false }
+      - { label: Certificate file, name: file, widget: file, required: false, choose_url: false, hint: 'PDF, JPG, PNG or WebP only. The file is made public ONLY when this certificate is Published. Do not upload documents you want to keep private.' }
+      - { label: Associated experience, name: experience, widget: relation, collection: experience, search_fields: ['organization', 'title'], value_field: '{{slug}}', display_fields: ['organization'], required: false }
+      - { label: Allow preview, name: allow_preview, widget: boolean, default: true }
+      - { label: Allow download, name: allow_download, widget: boolean, default: true }
+      - { <<: *visibility, default: draft }
+
+  # =========================================================================================== 5. EDUCATION
+  - name: education
+    label: Education
+    delete: false
+    files:
+      - name: education
+        label: Education
+        file: content/education.json
+        format: json
+        fields:
+          - { label: University, name: institution, widget: string }
+          - { label: Degree, name: degree, widget: string }
+          - { label: Expected graduation, name: expected_graduation, widget: string, hint: 'e.g. July 2027' }
+          - { label: Academic summary, name: description, widget: text, required: false, hint: 'Describe only what is true. Do not add GPA, awards or coursework you cannot verify.' }
+          - { label: Future direction, name: future_direction, widget: string, required: false }
+
+  # =========================================================================================== 6. ABOUT ME
+  - name: about
+    label: About Me
+    delete: false
+    files:
+      - name: profile
+        label: Headline, introduction and biography
+        file: content/profile.json
+        format: json
+        fields:
+          - { label: Professional headline line, name: eyebrow, widget: string }
+          - { label: Name, name: name, widget: string }
+          - { label: Headline, name: headline, widget: string }
+          - { label: Homepage introduction, name: intro, widget: text }
+          - { label: Focus, name: focus, widget: string, hint: 'Shown in the profile panel and About page.' }
+          - { label: Professional availability, name: availability, widget: string, required: false, hint: 'Shown only when filled in.' }
+          - { label: Current research (profile panel), name: current_research, widget: string, required: false }
+          - { label: Current research status label, name: current_research_status, widget: string, required: false }
+          - { label: Home About summary, name: about_summary, widget: markdown, minimal: true }
+          - { label: Home About link text, name: about_link_label, widget: string, required: false }
+          - { label: About page biography, name: biography, widget: markdown, minimal: true }
+          - { label: Career interests, name: career_interests, <<: *string_list, hint: 'Shown on the About page only when filled in.' }
+          - { label: Working principles intro, name: principles_lede, widget: string, required: false }
+          - { label: Working principles, name: principles, <<: *string_list }
+          - { label: Featured projects intro, name: featured_lede, widget: text, required: false }
+          - { label: Projects page intro, name: projects_page_lede, widget: text, required: false }
+
+  # =========================================================================================== 7. RESEARCH INTERESTS
+  - name: research_interests
+    label: Research Interests
+    delete: false
+    files:
+      - name: research_interests
+        label: Research interests
+        file: content/research-interests.json
+        format: json
+        fields:
+          - { label: Section label, name: eyebrow, widget: string }
+          - { label: Section title, name: title, widget: string }
+          - { label: Intro sentence, name: lede, widget: text }
+          - label: Areas
+            name: areas
+            widget: list
+            summary: '{{fields.key}}: {{fields.title}}'
+            fields:
+              - { label: Letter, name: key, widget: string }
+              - { label: Stage, name: stage, widget: select, options: ['Current focus', 'Developing interest'], required: false, hint: 'Keeps engineering/research focus distinct from developing interests.' }
+              - { label: Title, name: title, widget: string }
+              - { label: Topics, name: items, <<: *string_list }
+          - { label: Closing note, name: note, widget: text, required: false }
+
+  # =========================================================================================== 8. RESEARCH AND PUBLICATIONS
+  - name: research
+    label: Research and Publications
+    label_singular: Research entry
+    folder: content/research
+    extension: json
+    format: json
+    create: true
+    delete: true
+    slug: '{{slug}}'
+    identifier_field: title
+    summary: '{{title}} ({{type}}, {{status}})'
+    media_folder: /assets/research
+    public_folder: /assets/research
+    sortable_fields: ['order', 'title', 'type']
+    view_groups:
+      - { label: Type, field: type }
+    fields:
+      - { label: Research title, name: title, widget: string }
+      - { label: Type, name: type, widget: select, default: ongoing, options: [{ label: 'Ongoing research', value: ongoing }, { label: 'Technical report / self-published', value: technical-report }, { label: 'Peer-reviewed publication', value: peer-reviewed }], hint: 'Only choose Peer-reviewed for work that has actually passed peer review. Ongoing research is never a publication.' }
+      - *visibility
+      - *order
+      - { label: Research status, name: research_status, widget: select, default: in_progress, options: [{ label: In progress, value: in_progress }, { label: Completed, value: completed }, { label: Planned, value: planned }] }
+      - { label: Short description, name: short_description, widget: text }
+      - <<: *chips
+      - { label: Existing detail page, name: detail_page, widget: string, required: false, hint: 'e.g. fyp-research.html. When set, that hand-authored page is the detail view and the fields below are not used.' }
+      - { label: Detail link text, name: detail_label, widget: string, required: false }
+      - { label: Research problem, name: problem, widget: markdown, required: false, minimal: true }
+      - { label: Research objectives, name: objectives, <<: *string_list }
+      - { label: Methodology, name: methodology, widget: markdown, required: false, minimal: true }
+      - { label: Technologies, name: technologies, <<: *string_list }
+      - label: Related documents
+        name: related_documents
+        widget: list
+        required: false
+        summary: '{{fields.label}}'
+        fields: [{ label: Label, name: label, widget: string }, { label: File, name: file, widget: file, choose_url: false }]
+      - { label: GitHub URL, name: github_url, widget: string, required: false }
+      - { label: GitHub link text, name: github_label, widget: string, required: false }
+      - { label: Publication URL, name: publication_url, widget: string, required: false }
+      - { label: Publication link text, name: publication_label, widget: string, required: false }
+
+  # =========================================================================================== 9. SOCIAL LINKS AND CONTACT
+  - name: contact
+    label: Social Links and Contact
+    delete: false
+    files:
+      - name: contact
+        label: Contact information
+        file: content/contact.json
+        format: json
+        fields:
+          - { label: Contact page intro, name: lede, widget: text }
+          - { label: Home page contact intro, name: home_lede, widget: string }
+          - { label: GitHub profile URL, name: github_url, widget: string, required: false }
+          - { label: GitHub text, name: github_display, widget: string, required: false }
+          - { label: LinkedIn profile URL, name: linkedin_url, widget: string, required: false, hint: 'Leave empty to hide LinkedIn everywhere.' }
+          - { label: LinkedIn text, name: linkedin_display, widget: string, required: false }
+          - { label: Email address, name: email, widget: string, required: false }
+          - { label: Email text, name: email_display, widget: string, required: false }
+          - { label: Other social links, name: other_links, widget: list, required: false, summary: '{{fields.label}}', fields: [{ label: Name, name: label, widget: string }, { label: URL, name: url, widget: string }, { label: Text, name: display, widget: string, required: false }] }
+
+  # =========================================================================================== 10. WEBSITE SETTINGS
+  - name: settings
+    label: Website Settings
+    delete: false
+    files:
+      - name: settings
+        label: Website settings
+        file: content/settings.json
+        format: json
+        fields:
+          - { label: Site name, name: site_name, widget: string }
+          - { label: Home page title, name: home_title, widget: string }
+          - { label: Meta description (home), name: meta_description, widget: text }
+          - label: Other page descriptions
+            name: seo
+            widget: object
+            fields:
+              - { label: About page, name: about_description, widget: text }
+              - { label: Projects page, name: projects_description, widget: text }
+              - { label: Contact page, name: contact_description, widget: text }
+          - { label: Footer copyright, name: footer_copyright, widget: string }
+          - { label: Footer note, name: footer_note, widget: string, hint: 'Only state technologies that are actually used.' }
+          - { label: CV file, name: cv_file, widget: file, choose_url: false, media_folder: /resume, public_folder: /resume }
+          - { label: Profile image, name: profile_image, widget: image, choose_url: false, media_folder: /images, public_folder: /images }
+          - { label: Profile image description (alt text), name: profile_image_alt, widget: string }
+          - { label: Logo, name: logo, widget: image, choose_url: false, media_folder: /images, public_folder: /images }
+          - label: Navigation menu
+            name: navigation
+            widget: list
+            summary: '{{fields.label}}'
+            hint: 'Drag to reorder. Use page.html or index.html#section-id.'
+            fields: [{ label: Link text, name: label, widget: string }, { label: Address, name: href, widget: string }]

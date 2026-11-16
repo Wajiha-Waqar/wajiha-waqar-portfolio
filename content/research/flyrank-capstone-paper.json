@@ -1,0 +1,23 @@
+{
+  "title": "Leakage-Aware Content Refresh Opportunity Scoring: FlyRank Capstone",
+  "type": "technical-report",
+  "status": "published",
+  "order": 20,
+  "research_status": "completed",
+  "short_description": "Technical paper accompanying the capstone notebook. It is self-published on GitHub Pages and has not been peer-reviewed.",
+  "status_chips": [
+    { "style": "note", "label": "Self-published" },
+    { "style": "note", "label": "Not peer-reviewed" }
+  ],
+  "detail_page": "capstone.html",
+  "detail_label": "Read capstone case study",
+  "problem": "",
+  "objectives": [],
+  "methodology": "",
+  "technologies": ["Python", "Pandas", "NumPy", "Scikit-learn", "Random Forest", "Jupyter Notebook"],
+  "related_documents": [],
+  "github_url": "https://github.com/Wajiha-Waqar/FlyRankInternship/blob/main/work/notebooks/capstone.ipynb",
+  "github_label": "Notebook",
+  "publication_url": "https://wajiha-waqar.github.io/FlyRankInternship/",
+  "publication_label": "Read the paper"
+}

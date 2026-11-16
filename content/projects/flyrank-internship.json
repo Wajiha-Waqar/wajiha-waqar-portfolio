@@ -1,0 +1,27 @@
+{
+  "title": "FlyRank Search Intelligence Internship",
+  "status": "published",
+  "order": 40,
+  "featured": false,
+  "placeholder": false,
+  "completion": "completed",
+  "short_description": "Built a transparent baseline ranking system using DuckDB and Python for identifying pages that may require SEO refresh. Designed rule-based scoring, signal validation, ranked queues, and model benchmarking.",
+  "categories": ["Data", "AI / ML", "Engineering"],
+  "status_chips": [{ "style": "done", "label": "Completed" }],
+  "technologies": ["DuckDB", "Python", "Pandas", "NumPy", "Google Colab"],
+  "case_study_url": "flyrank.html",
+  "case_study_label": "Read internship case study",
+  "extra_links": [],
+  "thumbnail_alt": "",
+  "screenshots": [
+    { "image": "images/flyrank-notebook.png", "alt": "FlyRank notebook screenshot showing scoring logic", "caption": "Notebook: baseline scoring and signal validation" },
+    { "image": "images/github.png", "alt": "GitHub repository screenshot for the FlyRank project", "caption": "Project repository on GitHub" }
+  ],
+  "facts": [],
+  "anchor": "",
+  "case_chips": [],
+  "categories_aria": "",
+  "side_heading": "Technology",
+  "home_visuals": [],
+  "case_visuals": []
+}
