@@ -3,9 +3,105 @@
   "title": "Technical expertise",
   "lede": "Skills I have used in the projects and internships on this site.",
   "categories": [
-    { "name": "Programming & Software", "visible": true, "skills": [{ "name": "Python", "visible": true }, { "name": "SQL", "visible": true }, { "name": "Git and GitHub", "visible": true }, { "name": "HTML and CSS", "visible": true }] },
-    { "name": "AI & Machine Learning", "visible": true, "skills": [{ "name": "Machine Learning", "visible": true }, { "name": "Scikit-learn", "visible": true }, { "name": "Natural Language Processing", "visible": true }, { "name": "AI Agent Design", "visible": true }] },
-    { "name": "Data & Analytics", "visible": true, "skills": [{ "name": "Pandas", "visible": true }, { "name": "NumPy", "visible": true }, { "name": "DuckDB", "visible": true }, { "name": "Data Analysis", "visible": true }, { "name": "Jupyter Notebook", "visible": true }, { "name": "Google Colab", "visible": true }] },
-    { "name": "Research & Methods", "visible": true, "skills": [{ "name": "Experimental Design", "visible": true }, { "name": "Model Evaluation", "visible": true }, { "name": "Data Leakage Analysis", "visible": true }, { "name": "Decision-Support Systems", "visible": true }, { "name": "Statistical Analysis", "visible": true }] }
+    {
+      "name": "Programming & Software",
+      "visible": true,
+      "skills": [
+        {
+          "name": "Python",
+          "visible": true
+        },
+        {
+          "name": "SQL",
+          "visible": true
+        },
+        {
+          "name": "Git and GitHub",
+          "visible": true
+        },
+        {
+          "name": "HTML and CSS",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "name": "AI & Machine Learning",
+      "visible": true,
+      "skills": [
+        {
+          "name": "Machine Learning",
+          "visible": true
+        },
+        {
+          "name": "Scikit-learn",
+          "visible": true
+        },
+        {
+          "name": "Natural Language Processing",
+          "visible": true
+        },
+        {
+          "name": "AI Agent Design",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "name": "Data & Analytics",
+      "visible": true,
+      "skills": [
+        {
+          "name": "Pandas",
+          "visible": true
+        },
+        {
+          "name": "NumPy",
+          "visible": true
+        },
+        {
+          "name": "DuckDB",
+          "visible": false
+        },
+        {
+          "name": "Data Analysis",
+          "visible": true
+        },
+        {
+          "name": "Jupyter Notebook",
+          "visible": true
+        },
+        {
+          "name": "Google Colab",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "name": "Research & Methods",
+      "visible": true,
+      "skills": [
+        {
+          "name": "Experimental Design",
+          "visible": true
+        },
+        {
+          "name": "Model Evaluation",
+          "visible": true
+        },
+        {
+          "name": "Data Leakage Analysis",
+          "visible": true
+        },
+        {
+          "name": "Decision-Support Systems",
+          "visible": true
+        },
+        {
+          "name": "Statistical Analysis",
+          "visible": true
+        }
+      ]
+    }
   ]
 }
