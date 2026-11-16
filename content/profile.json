@@ -1,0 +1,23 @@
+{
+  "eyebrow": "AI/ML Engineer | Applied Machine Learning | Research & Decision Systems",
+  "name": "Wajiha Waqar",
+  "headline": "Building Intelligent Systems for Better Decisions.",
+  "intro": "I am an Information Technology undergraduate interested in building reliable AI and machine learning systems. My work explores applied machine learning, data-driven decision support, research methodologies, and trustworthy AI. I enjoy translating technical and research problems into practical, measurable solutions.",
+  "focus": "AI/ML engineering and applied research",
+  "availability": "",
+  "current_research": "MCP prompt-injection security",
+  "current_research_status": "In progress",
+  "about_summary": "I am completing my Bachelor's in Information Technology while developing practical skills in machine learning, data engineering and AI research. I favour explainable decision-support systems built on reliable data over black-box solutions.",
+  "about_link_label": "Read the full profile",
+  "biography": "I am currently completing my Bachelor's in Information Technology while developing practical skills in Machine Learning, Data Engineering, and AI research.\n\nMy work focuses on building explainable decision-support systems using reliable data rather than black-box solutions.\n\nI enjoy solving complex real-world problems. Alongside my work in AI and machine learning, I am developing research interests in optimization, operations research and quantitative finance.",
+  "career_interests": ["Optimization", "Operations research", "Quantitative finance"],
+  "principles_lede": "Drawn from my FlyRank internship and capstone work.",
+  "principles": [
+    "Machine learning should always outperform an understandable baseline.",
+    "Transparent rules improve trust and explainability.",
+    "Feature leakage must always be avoided.",
+    "Signal validation is essential before model development."
+  ],
+  "featured_lede": "Three projects, each labelled with its actual status: what is implemented, what is proposed, and what is still being built.",
+  "projects_page_lede": "Three featured projects as structured case studies, followed by other work and what is planned next."
+}

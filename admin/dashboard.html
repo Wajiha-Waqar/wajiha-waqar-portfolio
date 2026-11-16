@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>CMS Dashboard | Wajiha Waqar</title>
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body class="cms-dashboard">
+  <main class="dashboard-wrap">
+    <header class="dashboard-header">
+      <a href="/admin/">← Content manager</a>
+      <h1>Portfolio dashboard</h1>
+      <p>Review deploy status, CMS drafts, content counts, and recent publishes.</p>
+    </header>
+    <section id="gate" class="dashboard-card" hidden role="alert"></section>
+    <div id="content" aria-busy="true" hidden>
+      <section class="dashboard-card"><h2>Account</h2><p id="acct"></p></section>
+      <section class="dashboard-card"><h2>Production deploy</h2><p id="live" role="status">Checking…</p></section>
+      <section class="dashboard-card"><h2>Content counts</h2><ul id="counts" class="dashboard-counts"></ul></section>
+      <section class="dashboard-card"><h2>Draft pull requests</h2><p>Review the preview before approving and merging the pull request.</p><ul id="pending"></ul></section>
+      <section class="dashboard-card"><h2>Recent publishes</h2><ul id="recent"></ul></section>
+    </div>
+  </main>
+  <script src="deploy-core.js"></script>
+  <script src="dashboard.js"></script>
+</body>
+</html>

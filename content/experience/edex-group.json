@@ -1,0 +1,19 @@
+{
+  "organization": "EDEX Group of Chakwal",
+  "title": "Admission Officer Intern",
+  "status": "published",
+  "order": 20,
+  "employment_type": "Internship",
+  "meta_label": "3 months · Completed April 2026",
+  "current": false,
+  "major": false,
+  "responsibilities": [
+    "Student profile assessments for study-abroad opportunities",
+    "Course and study-option research across Europe, the UK, Australia and other countries",
+    "Guidance on admission requirements and procedures",
+    "Documentation and application support"
+  ],
+  "skills_note": "communication and analytical skills.",
+  "certificate": "edex-internship-certificate",
+  "links": []
+}

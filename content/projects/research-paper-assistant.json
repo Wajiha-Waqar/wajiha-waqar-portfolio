@@ -1,0 +1,56 @@
+{
+  "title": "Research Paper Assistant Workflow",
+  "status": "published",
+  "order": 10,
+  "featured": true,
+  "placeholder": false,
+  "completion": "mvp",
+  "short_description": "A structured prompt-chaining workflow for source-grounded literature review: NotebookLM grounds answers in uploaded papers, Claude reasons and drafts, and ChatGPT formats. Inputs, outputs, responsibilities and tool-access boundaries were defined, along with academic-integrity rules and evaluation cases. It is a workflow, not an autonomous agent.",
+  "detailed_description": "A workflow for helping with repetitive research tasks while leaving relevance, accuracy, and judgment to the researcher.",
+  "categories": ["Research", "AI / ML", "Systems"],
+  "status_chips": [
+    { "style": "done", "label": "MVP tested" },
+    { "style": "planned", "label": "Extensions planned" }
+  ],
+  "technologies": ["NotebookLM", "Claude Projects", "ChatGPT"],
+  "case_study_url": "research-agent.html",
+  "case_study_label": "Read case study",
+  "extra_links": [],
+  "thumbnail_alt": "",
+  "screenshots": [],
+  "facts": [
+    { "label": "Problem", "text": "Academic research means switching between tools for literature review, summarization, drafting and citation organization, while every claim must stay grounded in real papers." },
+    { "label": "Approach", "text": "A prompt-chaining workflow: NotebookLM grounds answers in uploaded PDFs, Claude reasons and drafts, and ChatGPT improves formatting. It is a workflow, not an autonomous agent." },
+    { "label": "Methods", "text": "Academic-integrity rules, five evaluation cases, risks and guardrails, and a four-iteration build log. The MVP was evaluated for citation accuracy, unsupported claims, summarization quality and formatting." },
+    { "label": "Outcome", "text": "An MVP tested on five research papers. Human verification remains necessary. Zotero integration, GitHub storage and automatic citation management are planned and not implemented." }
+  ],
+  "anchor": "feature-workflow",
+  "case_chips": [],
+  "categories_aria": "Project categories",
+  "side_heading": "Technology",
+  "home_visuals": [
+    {
+      "type": "matrix",
+      "rows": [
+        { "style": "done", "label": "Implemented", "text": "NotebookLM → Claude → ChatGPT workflow" },
+        { "style": "done", "label": "Implemented", "text": "Academic-integrity rules and five evaluation cases" },
+        { "style": "done", "label": "Tested", "text": "MVP run on five research papers" },
+        { "style": "planned", "label": "Planned", "text": "Zotero integration, GitHub storage, automatic citation management (not implemented)" },
+        { "style": "note", "label": "Required", "text": "Human verification of citations and claims" }
+      ]
+    }
+  ],
+  "case_visuals": [
+    {
+      "type": "diagram",
+      "title": "Workflow (prompt-chaining)",
+      "items": [
+        { "title": "Uploaded research papers (PDF)", "kind": "normal" },
+        { "title": "NotebookLM", "detail": "source-grounded summaries", "kind": "normal" },
+        { "title": "Claude Project", "detail": "reasoning and drafting", "kind": "normal" },
+        { "title": "ChatGPT", "detail": "formatting and readability", "kind": "normal" },
+        { "title": "Human verification", "detail": "citations, claims, final approval", "kind": "normal" }
+      ]
+    }
+  ]
+}

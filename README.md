@@ -1,141 +1,79 @@
 # Wajiha Waqar — Portfolio
 
-A personal portfolio website showcasing my work in Artificial Intelligence, Machine Learning, Data Engineering, and Research.
+Personal portfolio documenting work in AI, machine learning, data engineering and research, hosted on Netlify:
+**https://wajiha-waqar-portfolio.netlify.app/**
 
-**Live site:** [https://wajiha-waqar-portfolio.netlify.app/](https://wajiha-waqar-portfolio.netlify.app/)
+The site keeps its editorial, research-journal design and is generated as static HTML. Portfolio facts and content
+are managed as JSON through Decap CMS; shared page templates and the existing case-study bodies are maintained in
+`src/`.
 
----
+## Design system
 
-## About
+The site uses Source Serif 4 for display headings, Inter for body and interface text, and IBM Plex Mono for metadata.
+Its neutral paper background (`#F9FAFB`), ink (`#111827`) and restrained navy accent (`#1E3A8A`) keep the presentation
+readable and research-focused.
 
-I'm an IT undergraduate focused on Artificial Intelligence, Machine Learning, and Operations Research. This portfolio documents my project work, research interests, and career goals, with an emphasis on transparent, evidence-based writing rather than overstated claims.
+## Portfolio
 
-The site showcases:
+- **FlyRank Search Intelligence Internship** — signal validation, explainable baseline scoring and ranked review queues.
+- **Leakage-Aware Content Refresh Opportunity Scoring** — a held-out, time-split ranking-model case study.
+- **Research Paper Assistant Workflow** — a source-grounded prompt-chaining workflow.
+- **Cross-session prompt-injection research** — ongoing undergraduate research; no results are reported.
+- Additional project work, experience, education, research interests, resume and contact information.
 
-- **FlyRank Search Intelligence Internship** — a case study on framing an SEO prioritization problem as a machine learning ranking task
-- Additional AI/ML projects (Resume Parser, and an upcoming Disaster Alert System)
-- Research interests and academic goals
-- Resume and contact information
+The original root-level HTML pages and media remain in the repository as preserved source copies. The four detailed
+case studies are copied to `src/pages/` for the CMS build; their body markup is retained.
 
----
-
-## Tech Stack
-
-- HTML5
-- CSS3
-- Vanilla JavaScript
-- Hosted on Netlify
-
-No frameworks or build tools — the site is intentionally simple and dependency-free.
-
----
-
-## Project Structure
+## Structure
 
 ```
-wajiha-waqar-portfolio/
-│
-├── index.html          Home page
-├── about.html           About / bio / research interests
-├── projects.html         Project listing
-├── flyrank.html          FlyRank case study
-├── contact.html          Contact links
-│
-├── style.css            Site-wide styles
-├── script.js             Small UI behaviors
-│
-├── images/
-│   ├── Portfolio_logo.svg
-│   ├── profile.jpg
-│   ├── flyrank-notebook.png
-│   ├── github.png
-│   └── resume-parser.png
-│
-├── resume/
-│   └── Wajiha_Waqar_Resume.pdf
-│
-└── README.md
+content/                 CMS-managed JSON records
+src/                     templates, shared layout, content loader and preserved case-study bodies
+admin/                   Decap CMS entry, config, dashboard and deploy indicator
+netlify/functions/       single-account GitHub OAuth endpoints and shared handler
+assets/, images/, resume/ documents, images, certificate and resume
+style.css, script.js     site design and client-side interactions
+build.js                 generates dist/ from content/ and src/
+test/                    automated content, build, CMS, admin and OAuth tests
+docs/CMS.md              setup, approval workflow, certificate and troubleshooting guide
 ```
 
----
+`admin.js` is the earlier token-based editor and is not loaded by the current Decap CMS. It remains separate; do not
+combine it with the CMS. The old snapshot under `mnt/user-data/outputs/portfolio/` is not part of the deployed admin.
 
-## Design System
+## Local development
 
-| Element | Value |
-| --- | --- |
-| Heading font | Inter SemiBold |
-| Body font | Inter Regular |
-| Primary | `#2563EB` |
-| Text | `#111827` |
-| Background | `#F9FAFB` |
-| Accent | `#10B981` |
-
-The visual identity is kept clean, minimal, and research-focused, prioritizing readability over decoration.
-
----
-
-## Running Locally
-
-No build step is required. Clone the repository and open `index.html` directly in a browser, or serve it locally:
+Use Node.js 20 or newer (`.nvmrc` selects 20):
 
 ```bash
-git clone https://github.com/Wajiha-Waqar/wajiha-waqar-portfolio.git
-cd wajiha-waqar-portfolio
-python3 -m http.server 8000
+npm install
+npm run build
+npm run build:production
+npm test
+npx serve dist
 ```
 
-Then visit `http://localhost:8000`.
+`npm run build` makes a preview build: draft entries can appear, the pages are marked noindex, and hidden entries are
+never rendered. `npm run build:production` excludes draft and hidden records. Netlify runs `npm run build` with
+`CONTEXT=production` for its production deployment, so production visibility rules are applied automatically.
 
----
+Edit content from `/admin/` after the GitHub OAuth setup in [`docs/CMS.md`](docs/CMS.md). Never put OAuth secrets or
+personal access tokens in repository files. A CMS change is a draft pull request; inspect its Netlify Deploy Preview,
+approve it, and explicitly publish/merge it to `main` before it reaches production.
 
-## Deployment
+If a build fails, fix the content error identified in the output and rebuild. Netlify keeps serving the last successful
+production deploy; see the CMS guide for recovery and rollback instructions.
 
-The site is a static site (no build step) hosted on Netlify. Netlify settings (publish directory, linked repository) live in the Netlify dashboard; this repository has no `netlify.toml`.
+## Hosting and security
 
+The Netlify build and function configuration is in `netlify.toml`. GitHub OAuth permits only the account named by the
+Netlify `ALLOWED_GITHUB_USER` variable and checks write access to the configured repository. The OAuth client secret
+belongs only in Netlify environment variables.
 
----
-
-## Roadmap
-
-- [ ] Improve mobile responsiveness
-- [ ] Add additional case studies as new projects are completed
-- [ ] Add more screenshots and project visuals
-- [ ] Publish the Disaster Alert System project
-- [ ] Add research publications as they become available
-- [ ] Minor visual refinements and animations
-
----
-
-## Contact
+## Contact and reuse
 
 - GitHub: [github.com/Wajiha-Waqar](https://github.com/Wajiha-Waqar)
 - LinkedIn: [linkedin.com/in/wajiha-waqar](https://www.linkedin.com/in/wajiha-waqar)
 - Email: wajiha.waqar@example.com
 
----
-
-## License
-
-This repository contains personal portfolio content. Code may be reused for reference; personal content, writing, and images are not licensed for reuse.
-
----
-
-## Admin panel
-
-Edit the site without touching source code at `https://wajiha-waqar-portfolio.netlify.app/admin/`.
-
-**How it works.** Static hosting has no server, so there is no username/password. The admin panel is a static page that signs in with a GitHub fine-grained access token and saves changes as normal Git commits through the GitHub API. GitHub verifies the token on every write, so the public admin URL is harmless without it. Every change is permanent *and* reversible from the repo's commit history.
-
-**One-time setup**
-1. GitHub → Settings → Developer settings → Personal access tokens → **Fine-grained tokens** → Generate new token.
-2. Repository access: *Only select repositories* → this repo. Permissions → Repository → **Contents: Read and write** (optionally *Pages: Read*). Set an expiry.
-3. Open `/admin/`, paste the token, sign in.
-
-**What you can do**
-- **Pages:** click and type over any text, duplicate / move / delete blocks, change links and images, edit title and description, preview at desktop/tablet/mobile widths.
-- **Files:** edit any text file (including `style.css`), upload and delete files, create a new page from an existing one.
-- **Navigation:** edit the menu once and apply it to every page in a single commit.
-
-**Limits.** Uploads over 50 MB (e.g. large videos) must be added with Git. Branch protection that requires pull requests on `main` will block saves. The first save of a page may re-indent its HTML (it renders identically).
-
-Files: `admin/index.html`, `admin/admin.css`, `admin/admin.js` (UI), `admin/core.js` (GitHub client and helpers), `admin/config.js` (owner / repo / branch).
+Code may be used for reference; personal portfolio content, writing, documents and images are not licensed for reuse.

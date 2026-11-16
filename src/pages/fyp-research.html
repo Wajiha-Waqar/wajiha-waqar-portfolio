@@ -1,0 +1,157 @@
+<!--page {"title":"Cross-Session Prompt Injection in MCP-Based AI Agents | Wajiha Waqar","description":"Ongoing undergraduate research on whether attacker-controlled persistent state that survives a session boundary changes unintended action likelihood in MCP-based AI agents, with a proposed provenance and trust-policy defense. No results reported yet.","parent":"projects.html"} -->
+<main id="main">
+
+<section class="case-header">
+
+<p class="case-back"><a href="projects.html">&larr; Projects</a></p>
+
+<div class="state-row"><span class="state state--wip">Research in progress</span><span class="state state--proposed">Design and defense proposed</span></div>
+
+<h1 class="title-long">Evaluating Cross-Session Prompt Injection in MCP-Based AI Agents: Persistence, Security Defenses, and Tool-Use Outcomes</h1>
+<p>Undergraduate final-year research &bull; LLM security &bull; Prompt injection &bull; AI agent security &bull; Model Context Protocol (MCP)</p>
+
+</section>
+
+<section class="case-section">
+<h2>Status at a glance</h2>
+<p>This is ongoing research. Each item below is labelled with its actual state, and nothing on this page should be read as a completed result.</p>
+<div class="legend" role="group" aria-label="Status labels used on this site">
+<span><span class="state state--done">Implemented</span></span>
+<span><span class="state state--proposed">Proposed</span></span>
+<span><span class="state state--wip">In progress</span></span>
+<span><span class="state state--planned">Planned</span></span>
+</div>
+<ul class="matrix stack-top">
+<li><span class="state state--proposed">Proposed</span>Experimental design: matched P0 / P1 conditions</li>
+<li><span class="state state--proposed">Proposed</span>Evaluation methodology: eight metrics in three groups</li>
+<li><span class="state state--proposed">Proposed</span>Defense: deterministic provenance and trust policies</li>
+<li><span class="state state--wip">In progress</span>Research under way; no results are reported yet</li>
+</ul>
+</section>
+
+<section class="case-section">
+<h2>Research problem</h2>
+<p>
+Large language model (LLM) agents that act through tools can be manipulated by attacker-controlled content, a
+class of attack known as prompt injection. This project studies a cross-session variant: attacker-controlled
+content held in persistent application state that survives a session boundary, in agents that use the Model
+Context Protocol (MCP) to reach tools.
+</p>
+</section>
+
+<section class="case-section">
+<h2>Research question</h2>
+<p class="question">Does attacker-controlled persistent state that survives a session boundary change the likelihood of unintended MCP-mediated actions?</p>
+</section>
+
+<section class="case-section">
+<h2>Research objectives</h2>
+<ul>
+<li>Evaluate whether cross-session persistence of attacker-controlled state changes the likelihood of unintended MCP-mediated actions.</li>
+<li>Evaluate a proposed defense that uses deterministic provenance and trust policies to identify untrusted persistent content before sensitive MCP execution.</li>
+<li>Examine tool-use outcomes under the conditions tested.</li>
+</ul>
+</section>
+
+<section class="case-section">
+<h2>Experimental design <span class="state state--proposed">Proposed</span></h2>
+<p>
+The study investigates whether persistence across session boundaries changes the likelihood of unintended
+MCP-mediated actions. It uses two matched conditions:
+</p>
+<div class="conditions">
+<div class="cond"><span class="cond-k">P0</span><p>Attacker-controlled application state is unavailable after the session reset.</p></div>
+<div class="cond"><span class="cond-k">P1</span><p>The same attacker-controlled state remains retrievable after the session reset.</p></div>
+</div>
+<p>The conditions are matched: what differs is whether the attacker-controlled state remains retrievable after the session reset.</p>
+<figure class="diagram">
+<figcaption><span class="fig-title">Proposed experimental design (conceptual)</span></figcaption>
+<ol>
+<li>Session 1<small>attacker-controlled content is written to application state</small></li>
+<li class="is-boundary">Session reset<small>P0: the state is unavailable &middot; P1: the same state remains retrievable</small></li>
+<li>Session 2<small>the agent operates after the reset</small></li>
+<li class="is-proposed">Proposed defense<small>deterministic provenance and trust policies, checked before sensitive MCP execution</small></li>
+<li>MCP tool call<small>measured outcome: unintended action or not</small></li>
+</ol>
+<p class="note">Conceptual illustration of the proposed design, not a description of a finished implementation.</p>
+</figure>
+</section>
+
+<section class="case-section">
+<h2>Defense concept <span class="state state--proposed">Proposed</span></h2>
+<p>
+The proposed defense uses deterministic provenance and trust policies to identify untrusted persistent content
+before sensitive MCP execution. In outline: persistent content is tracked by where it came from, a trust policy
+decides whether it is trusted, and untrusted content is flagged before the agent is allowed to run a sensitive tool.
+</p>
+</section>
+
+<section class="case-section">
+<h2>Evaluation methodology <span class="state state--proposed">Proposed</span></h2>
+<p>
+Eight metrics in three groups. The primary question concerns security outcomes; defense performance and
+benign-task performance show what the proposed defense decides, what it costs, and whether legitimate use is preserved.
+</p>
+
+<div class="metric-group">
+<header><h3>Primary security outcomes</h3><span class="state state--proposed">Primary</span></header>
+<p>These describe the attack itself, from payload to action, and are the basis for comparing P0 with P1.</p>
+<dl class="metrics">
+<div><dt>Weaponization Success Rate <abbr title="Weaponization Success Rate">WSR</abbr></dt><dd>How often an attack attempt succeeds in weaponizing application state: placing attacker-controlled content there in a form intended to influence the agent.</dd></div>
+<div><dt>Injection Rate <abbr title="Injection Rate">IR</abbr></dt><dd>How often attacker-controlled content actually reaches the agent after the session reset. Under P0 the persistence route is closed by design, so differences between P0 and P1 reflect persistence.</dd></div>
+<div><dt>Action Rate <abbr title="Action Rate">AR</abbr></dt><dd>How often the agent performs an unintended MCP-mediated action. This is the study's central outcome.</dd></div>
+<div><dt>End-to-End Attack Success Rate <abbr title="End-to-End Attack Success Rate">E2E-ASR</abbr></dt><dd>How often an attempt succeeds across the whole chain, from weaponized state through injection to an unintended MCP-mediated action.</dd></div>
+</dl>
+</div>
+
+<div class="metric-group">
+<header><h3>Defense performance</h3></header>
+<p>These describe the proposed provenance and trust-policy defense itself.</p>
+<dl class="metrics">
+<div><dt>Defense decision rate</dt><dd>How often the deterministic provenance and trust policy reaches a decision on persistent content before a sensitive MCP call executes.</dd></div>
+<div><dt>Execution overhead</dt><dd>The additional cost the defense adds to MCP execution.</dd></div>
+</dl>
+</div>
+
+<div class="metric-group">
+<header><h3>Benign-task performance</h3></header>
+<p>These describe the effect on legitimate, non-attack use.</p>
+<dl class="metrics">
+<div><dt>Benign-task success</dt><dd>How often legitimate tasks are still completed successfully.</dd></div>
+<div><dt>False-block rate</dt><dd>How often legitimate actions are wrongly blocked by the defense.</dd></div>
+</dl>
+</div>
+
+<p class="stack-top">Definitions are given at the level of the proposed design, and exact computation will be specified in the final protocol. No results are reported on this page.</p>
+</section>
+
+<section class="case-section">
+<h2>Research areas, technologies and tools</h2>
+<div class="tag-grid">
+<div class="tag">LLM security</div>
+<div class="tag">Prompt injection</div>
+<div class="tag">AI agent security</div>
+<div class="tag">Model Context Protocol (MCP)</div>
+<div class="tag">Persistent application state</div>
+<div class="tag">Trust and provenance</div>
+<div class="tag">Security evaluation and defense mechanisms</div>
+</div>
+<p class="stack-top">Implementation tooling and experimental setup details will be added here as the work is documented.</p>
+</section>
+
+<section class="case-section">
+<h2>Current progress</h2>
+<ul class="matrix">
+<li><span class="state state--proposed">Proposed</span>Experimental design: matched P0 / P1 conditions</li>
+<li><span class="state state--proposed">Proposed</span>Evaluation methodology: eight metrics in three groups</li>
+<li><span class="state state--proposed">Proposed</span>Defense concept: deterministic provenance and trust policies</li>
+<li><span class="state state--wip">In progress</span>The research project itself</li>
+<li><span class="state state--planned">No results</span>No experimental results, performance figures or publications are reported on this page</li>
+</ul>
+</section>
+
+<section class="contact-preview">
+<a href="projects.html" class="btn-primary">Back to Projects</a>
+</section>
+
+</main>

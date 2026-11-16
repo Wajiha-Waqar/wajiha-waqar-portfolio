@@ -75,6 +75,15 @@ document.addEventListener("DOMContentLoaded", () => {
     targets.forEach((t) => spy.observe(t.el));
   }
 
+  /* ---- "Back to portfolio": return to where the visitor came from when they came from this site ---- */
+  document.querySelectorAll("[data-back]").forEach((a) => a.addEventListener("click", (e) => {
+    try {
+      if (document.referrer && new URL(document.referrer).origin === window.location.origin && window.history.length > 1) {
+        e.preventDefault(); window.history.back();
+      }
+    } catch (err) { /* fall through to the normal link */ }
+  }));
+
   /* ---- Document preview modal: click-outside and Escape ---- */
   const modal = document.getElementById("doc-preview-modal");
   if (modal) {
@@ -97,7 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 /* ---------------------------------------------------------------------
    Renders a .docx inline in a preview modal using mammoth.js.
-   Needs the page served over http/https (GitHub Pages or a local server
+   Needs the page served over http/https (the live site or a local server
    such as `python3 -m http.server`); fetch() can't read file:// URLs.
    If anything fails, the modal says so and the Download button remains
    the guaranteed fallback.
@@ -130,7 +139,7 @@ async function previewDoc(path, title) {
       '<p class="doc-modal-status">This preview couldn\'t load in the browser ' +
       "(this happens when the page is opened directly from disk instead of " +
       "through a web server). Use the Download button on the card instead, " +
-      "or check the live GitHub Pages site.</p>";
+      "or check the live site.</p>";
   }
 }
 

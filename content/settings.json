@@ -1,0 +1,24 @@
+{
+  "site_name": "Wajiha Waqar",
+  "home_title": "Wajiha Waqar | AI/ML Engineer",
+  "meta_description": "Wajiha Waqar, an Information Technology undergraduate building reliable AI and machine learning systems: applied ML, decision support, trustworthy AI and research.",
+  "seo": {
+    "about_description": "About Wajiha Waqar: Information Technology undergraduate focused on machine learning, data engineering and explainable decision-support systems.",
+    "projects_description": "Featured projects by Wajiha Waqar: a research-paper assistant workflow, a leakage-aware ranking model, and ongoing research on prompt-injection security in MCP-based AI agents.",
+    "contact_description": "Contact Wajiha Waqar about AI, machine learning, research collaborations and software projects."
+  },
+  "footer_copyright": "© 2026 Wajiha Waqar",
+  "footer_note": "Built with HTML, CSS and JavaScript. Hosted on Netlify.",
+  "cv_file": "resume/wajiha_waqar_resume.pdf",
+  "profile_image": "images/profile.jpg",
+  "profile_image_alt": "Portrait of Wajiha Waqar",
+  "logo": "images/Portfolio_logo.svg",
+  "navigation": [
+    { "label": "Home", "href": "index.html" },
+    { "label": "About", "href": "about.html" },
+    { "label": "Projects", "href": "projects.html" },
+    { "label": "Research", "href": "index.html#research" },
+    { "label": "Experience", "href": "index.html#experience" },
+    { "label": "Contact", "href": "contact.html" }
+  ]
+}

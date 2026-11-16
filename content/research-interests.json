@@ -1,0 +1,11 @@
+{
+  "eyebrow": "Research interests",
+  "title": "Three connected areas",
+  "lede": "AI systems produce predictions, decision science turns them into choices under constraints, and quantitative methods model the uncertainty around both.",
+  "areas": [
+    { "key": "A", "stage": "Current focus", "title": "AI & Intelligent Systems", "items": ["Artificial Intelligence", "Machine Learning", "LLM Applications", "AI Agents", "Trustworthy AI", "AI Security"] },
+    { "key": "B", "stage": "Developing interest", "title": "Mathematical & Decision Sciences", "items": ["Applied Mathematics", "Probability and Statistics", "Optimization", "Operations Research", "Decision Science"] },
+    { "key": "C", "stage": "Developing interest", "title": "Quantitative Research", "items": ["Quantitative Finance", "Financial Engineering", "Mathematical Modeling", "Computational Finance"] }
+  ],
+  "note": "These are research interests and directions of study, not professional specializations. AI/ML engineering and applied research are my current focus; areas B and C are developing interests."
+}

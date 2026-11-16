@@ -1,0 +1,26 @@
+{
+  "organization": "FlyRank",
+  "title": "Search Intelligence Intern",
+  "status": "published",
+  "order": 10,
+  "employment_type": "Internship",
+  "meta_label": "Internship · Machine learning",
+  "current": false,
+  "major": true,
+  "description": "Predictive ranking and decision support on large-scale search and engagement data (a warehouse of about 78.8 million rows), built with Python and DuckDB.",
+  "responsibilities_heading": "Contributions",
+  "responsibilities": [
+    "Performed signal validation before any modelling",
+    "Designed transparent, explainable scoring rules",
+    "Generated ranked action queues and reviewed top-ranked pages",
+    "Evaluated baseline logic as the benchmark for models",
+    "Engineered 26 features and ran leakage audits for the capstone ranking model"
+  ],
+  "skills": ["Python", "DuckDB", "Pandas", "NumPy", "Scikit-learn", "Google Colab"],
+  "achievements": "A transparent baseline ranking system, then a leakage-aware Random Forest ranking model that beat a fixed baseline on a held-out future month (Precision@20 of 0.65 against 0.40).",
+  "certificate": "",
+  "links": [
+    { "label": "Internship case study", "url": "flyrank.html" },
+    { "label": "Capstone case study", "url": "capstone.html" }
+  ]
+}

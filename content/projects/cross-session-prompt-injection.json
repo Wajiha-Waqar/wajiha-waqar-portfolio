@@ -1,0 +1,69 @@
+{
+  "title": "Evaluating Cross-Session Prompt Injection in MCP-Based AI Agents: Persistence, Security Defenses, and Tool-Use Outcomes",
+  "status": "published",
+  "order": 30,
+  "featured": true,
+  "placeholder": false,
+  "completion": "in_progress",
+  "short_description": "Undergraduate final-year research on whether attacker-controlled persistent state that survives a session boundary changes the likelihood of unintended MCP-mediated actions, and on a proposed defense that uses deterministic provenance and trust policies to flag untrusted persistent content before sensitive tool execution. Research is in progress and no results are reported.",
+  "detailed_description": "Ongoing undergraduate research. The experimental design and proposed defense are described in the existing research overview; no results are reported.",
+  "categories": ["Research", "AI security", "Systems"],
+  "status_chips": [
+    { "style": "wip", "label": "Research in progress" },
+    { "style": "proposed", "label": "Design and defense proposed" }
+  ],
+  "technologies": ["LLM security", "Prompt injection", "AI agent security", "Model Context Protocol (MCP)"],
+  "case_study_url": "fyp-research.html",
+  "case_study_label": "Read research overview",
+  "extra_links": [],
+  "thumbnail_alt": "",
+  "screenshots": [],
+  "facts": [
+    { "label": "Problem", "text": "LLM agents that act through tools can be manipulated by attacker-controlled content (prompt injection). This project studies a cross-session variant: attacker-controlled content held in persistent application state that survives a session boundary." },
+    { "label": "Question", "text": "Does attacker-controlled persistent state that survives a session boundary change the likelihood of unintended MCP-mediated actions?" },
+    { "label": "Conditions", "text": "Two matched conditions. P0: attacker-controlled application state is unavailable after the session reset. P1: the same state remains retrievable after the reset." },
+    { "label": "Defense", "text": "Proposed: deterministic provenance and trust policies that identify untrusted persistent content before sensitive MCP execution." },
+    { "label": "Evaluation", "text": "Eight proposed metrics in three groups: primary security outcomes, defense performance and benign-task performance." },
+    { "label": "Status", "text": "Research in progress. The experimental design and defense concept are proposed. No results, publications or performance claims are reported." }
+  ],
+  "anchor": "feature-fyp",
+  "case_chips": [],
+  "categories_aria": "Research areas",
+  "side_heading": "Research areas",
+  "home_visuals": [
+    {
+      "type": "diagram",
+      "title": "Proposed experimental design (conceptual)",
+      "items": [
+        { "title": "Session 1", "detail": "attacker-controlled content is written to application state", "kind": "normal" },
+        { "title": "Session reset", "detail": "P0: unavailable · P1: remains retrievable", "kind": "boundary" },
+        { "title": "Session 2", "detail": "the agent operates after the reset", "kind": "normal" },
+        { "title": "Proposed defense", "detail": "deterministic provenance and trust policies before sensitive MCP execution", "kind": "proposed" },
+        { "title": "MCP tool call", "detail": "measured outcome: unintended action or not", "kind": "normal" }
+      ],
+      "note": "Conceptual illustration of the proposed design, not a description of a finished implementation."
+    },
+    {
+      "type": "matrix",
+      "rows": [
+        { "style": "proposed", "label": "Proposed", "text": "Experimental design: matched P0 / P1 conditions" },
+        { "style": "proposed", "label": "Proposed", "text": "Defense: deterministic provenance and trust policies" },
+        { "style": "wip", "label": "In progress", "text": "Research under way; no results are reported yet" }
+      ]
+    }
+  ],
+  "case_visuals": [
+    {
+      "type": "diagram",
+      "title": "Proposed experimental design (conceptual)",
+      "items": [
+        { "title": "Session 1", "detail": "attacker-controlled content is written to application state", "kind": "normal" },
+        { "title": "Session reset", "detail": "P0: unavailable · P1: remains retrievable", "kind": "boundary" },
+        { "title": "Session 2", "detail": "the agent operates after the reset", "kind": "normal" },
+        { "title": "Proposed defense", "detail": "deterministic provenance and trust policies before sensitive MCP execution", "kind": "proposed" },
+        { "title": "MCP tool call", "detail": "measured outcome: unintended action or not", "kind": "normal" }
+      ],
+      "note": "Conceptual illustration of the proposed design, not a description of a finished implementation."
+    }
+  ]
+}
